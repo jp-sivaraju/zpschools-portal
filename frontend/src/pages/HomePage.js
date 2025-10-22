@@ -330,13 +330,13 @@ const HomePage = () => {
         </div>
       </footer>
 
-      {/* Auth Modal */}
+      {/* Premium Auth Modal */}
       <Dialog open={showAuth} onOpenChange={setShowAuth}>
-        <DialogContent className="sm:max-w-md" data-testid="auth-dialog">
+        <DialogContent className="sm:max-w-md bg-black/95 border border-white/10 text-white backdrop-blur-xl" data-testid="auth-dialog">
           <DialogHeader>
-            <DialogTitle>{isLogin ? 'Login' : 'Register'}</DialogTitle>
-            <DialogDescription>
-              {isLogin ? 'Welcome back! Login to access your account.' : 'Create an account to get started.'}
+            <DialogTitle className="text-2xl font-bold text-white">{isLogin ? 'Welcome Back' : 'Join Us'}</DialogTitle>
+            <DialogDescription className="text-gray-400">
+              {isLogin ? 'Sign in to access your account' : 'Create your account to get started'}
             </DialogDescription>
           </DialogHeader>
           <form onSubmit={handleAuth} className="space-y-4">
