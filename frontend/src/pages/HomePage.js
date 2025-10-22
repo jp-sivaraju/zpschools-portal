@@ -43,30 +43,32 @@ const HomePage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-orange-50">
-      {/* Header */}
-      <header className="glass-card sticky top-0 z-50 border-b border-gray-200">
-        <nav className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <Link to="/" className="flex items-center space-x-3">
-            <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-orange-500 rounded-full flex items-center justify-center">
-              <span className="text-white font-bold text-xl">ZP</span>
+    <div className="min-h-screen bg-black text-white">
+      <div className="gradient-mesh"></div>
+      
+      {/* Premium Header */}
+      <header className="glass-card sticky top-0 z-50 border-b border-white/10">
+        <nav className="container mx-auto px-6 py-5 flex justify-between items-center">
+          <Link to="/" className="flex items-center space-x-4">
+            <div className="w-11 h-11 bg-gradient-to-br from-blue-500 to-violet-600 rounded-xl flex items-center justify-center shadow-lg shadow-blue-500/20">
+              <span className="text-white font-bold text-lg">ZP</span>
             </div>
             <div>
-              <h1 className="text-xl font-bold text-gray-900">ZP School Portal</h1>
-              <p className="text-xs text-gray-600">Konaseema District, AP</p>
+              <h1 className="text-lg font-semibold text-white tracking-tight">ZP School Portal</h1>
+              <p className="text-xs text-gray-400">Konaseema District</p>
             </div>
           </Link>
-          <div className="flex items-center space-x-4">
-            <Link to="/schools" className="text-gray-700 hover:text-blue-600 font-medium transition-colors" data-testid="nav-schools">Schools</Link>
-            <Link to="/alumni" className="text-gray-700 hover:text-blue-600 font-medium transition-colors" data-testid="nav-alumni">Alumni</Link>
-            <Link to="/events" className="text-gray-700 hover:text-blue-600 font-medium transition-colors" data-testid="nav-events">Events</Link>
-            <Link to="/donations" className="text-gray-700 hover:text-blue-600 font-medium transition-colors" data-testid="nav-donate">Donate</Link>
+          <div className="flex items-center space-x-8">
+            <Link to="/schools" className="text-gray-300 hover:text-white font-medium transition-all hover:translate-y-[-1px]" data-testid="nav-schools">Schools</Link>
+            <Link to="/alumni" className="text-gray-300 hover:text-white font-medium transition-all hover:translate-y-[-1px]" data-testid="nav-alumni">Alumni</Link>
+            <Link to="/events" className="text-gray-300 hover:text-white font-medium transition-all hover:translate-y-[-1px]" data-testid="nav-events">Events</Link>
+            <Link to="/donations" className="text-gray-300 hover:text-white font-medium transition-all hover:translate-y-[-1px]" data-testid="nav-donate">Support</Link>
             {user ? (
               <Link to="/dashboard" data-testid="nav-dashboard">
-                <Button className="btn-primary bg-blue-600 hover:bg-blue-700">Dashboard</Button>
+                <Button className="btn-premium text-white">Dashboard</Button>
               </Link>
             ) : (
-              <Button onClick={() => setShowAuth(true)} className="btn-primary bg-blue-600 hover:bg-blue-700" data-testid="nav-login">Login</Button>
+              <Button onClick={() => setShowAuth(true)} className="btn-premium text-white" data-testid="nav-login">Sign In</Button>
             )}
           </div>
         </nav>
