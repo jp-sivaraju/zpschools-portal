@@ -248,14 +248,39 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="bg-gradient-to-br from-blue-600 to-blue-800 py-20">
-        <div className="container mx-auto px-4 text-center text-white">
-          <h2 className="text-4xl font-bold mb-6">Ready to Make a Difference?</h2>
-          <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-            Join thousands of students, alumni, and educators working together to transform education in Konaseema.
-          </p>
-          <Button onClick={() => setShowAuth(true)} className="btn-primary bg-white text-blue-600 hover:bg-gray-100 px-10 py-6 text-lg rounded-full" data-testid="cta-register">Get Started Today</Button>
+      {/* Premium CTA Section */}
+      <section className="py-32 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 via-violet-600/20 to-emerald-600/20"></div>
+        <div className="container mx-auto px-6 relative">
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="fade-in-up">
+              <div className="badge-premium mb-8 mx-auto">Join the Movement</div>
+              <h2 className="text-6xl font-bold mb-8 leading-tight">
+                Ready to Make a{' '}
+                <span className="text-gradient">Difference?</span>
+              </h2>
+              <p className="text-2xl text-gray-400 mb-12 leading-relaxed max-w-3xl mx-auto">
+                Join thousands of students, alumni, and educators working together to transform education in Konaseema.
+              </p>
+              <div className="flex flex-wrap gap-4 justify-center">
+                <Button 
+                  onClick={() => setShowAuth(true)} 
+                  className="btn-premium text-white px-12 py-5 text-lg rounded-2xl" 
+                  data-testid="cta-register"
+                >
+                  Get Started Today
+                </Button>
+                <Link to="/schools">
+                  <Button 
+                    variant="outline" 
+                    className="border border-white/20 bg-white/5 text-white hover:bg-white/10 px-12 py-5 text-lg rounded-2xl backdrop-blur-sm"
+                  >
+                    Explore Schools
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
