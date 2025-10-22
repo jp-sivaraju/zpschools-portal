@@ -284,39 +284,48 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-4 gap-8">
+      {/* Premium Footer */}
+      <footer className="border-t border-white/10 bg-black/50 backdrop-blur-xl">
+        <div className="container mx-auto px-6 py-16">
+          <div className="grid md:grid-cols-4 gap-12 mb-12">
             <div>
-              <h3 className="text-xl font-bold mb-4">ZP School Portal</h3>
-              <p className="text-gray-400">Empowering education across Konaseema District, Andhra Pradesh.</p>
+              <div className="flex items-center space-x-3 mb-6">
+                <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-violet-600 rounded-xl flex items-center justify-center">
+                  <span className="text-white font-bold">ZP</span>
+                </div>
+                <span className="text-lg font-semibold">ZP School Portal</span>
+              </div>
+              <p className="text-gray-400 leading-relaxed">
+                Empowering education across Konaseema District, Andhra Pradesh.
+              </p>
             </div>
             <div>
-              <h4 className="font-bold mb-4">Quick Links</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li><Link to="/schools" className="hover:text-white">Schools</Link></li>
-                <li><Link to="/alumni" className="hover:text-white">Alumni</Link></li>
-                <li><Link to="/events" className="hover:text-white">Events</Link></li>
-                <li><Link to="/donations" className="hover:text-white">Donate</Link></li>
+              <h4 className="font-semibold mb-4 text-white">Quick Links</h4>
+              <ul className="space-y-3">
+                <li><Link to="/schools" className="text-gray-400 hover:text-white transition-colors">Schools</Link></li>
+                <li><Link to="/alumni" className="text-gray-400 hover:text-white transition-colors">Alumni</Link></li>
+                <li><Link to="/events" className="text-gray-400 hover:text-white transition-colors">Events</Link></li>
+                <li><Link to="/donations" className="text-gray-400 hover:text-white transition-colors">Support</Link></li>
               </ul>
             </div>
             <div>
-              <h4 className="font-bold mb-4">Support</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li><Link to="/" className="hover:text-white">Contact Us</Link></li>
-                <li><Link to="/" className="hover:text-white">Help Center</Link></li>
-                <li><Link to="/" className="hover:text-white">Privacy Policy</Link></li>
+              <h4 className="font-semibold mb-4 text-white">Resources</h4>
+              <ul className="space-y-3">
+                <li><Link to="/" className="text-gray-400 hover:text-white transition-colors">Contact Us</Link></li>
+                <li><Link to="/" className="text-gray-400 hover:text-white transition-colors">Help Center</Link></li>
+                <li><Link to="/" className="text-gray-400 hover:text-white transition-colors">Privacy Policy</Link></li>
               </ul>
             </div>
             <div>
-              <h4 className="font-bold mb-4">Connect</h4>
-              <p className="text-gray-400">Email: info@zpschools.ap.gov.in</p>
-              <p className="text-gray-400 mt-2">Phone: +91 12345 67890</p>
+              <h4 className="font-semibold mb-4 text-white">Connect</h4>
+              <p className="text-gray-400 mb-2">info@zpschools.ap.gov.in</p>
+              <p className="text-gray-400">+91 12345 67890</p>
             </div>
           </div>
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+          <div className="premium-divider my-8"></div>
+          <div className="flex flex-col md:flex-row justify-between items-center text-gray-400 text-sm">
             <p>&copy; 2025 ZP School Portal, Konaseema District. All rights reserved.</p>
+            <p className="mt-4 md:mt-0">Built with ❤️ for education</p>
           </div>
         </div>
       </footer>
