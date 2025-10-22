@@ -138,26 +138,22 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="bg-gradient-to-r from-blue-600 to-orange-500 py-16">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-4 gap-8 text-center text-white">
-            <div className="fade-in">
-              <p className="text-5xl font-bold mb-2">300+</p>
-              <p className="text-blue-100">ZP Schools</p>
-            </div>
-            <div className="fade-in">
-              <p className="text-5xl font-bold mb-2">100K+</p>
-              <p className="text-blue-100">Students & Alumni</p>
-            </div>
-            <div className="fade-in">
-              <p className="text-5xl font-bold mb-2">22</p>
-              <p className="text-blue-100">Mandals</p>
-            </div>
-            <div className="fade-in">
-              <p className="text-5xl font-bold mb-2">44</p>
-              <p className="text-blue-100">MEO Officers</p>
-            </div>
+      {/* Premium Stats Section */}
+      <section className="py-24 relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-500/5 to-transparent"></div>
+        <div className="container mx-auto px-6 relative">
+          <div className="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto">
+            {[
+              { number: '300+', label: 'ZP Schools', delay: '0' },
+              { number: '100K+', label: 'Students & Alumni', delay: '100' },
+              { number: '22', label: 'Mandals', delay: '200' },
+              { number: '44', label: 'MEO Officers', delay: '300' }
+            ].map((stat, idx) => (
+              <div key={idx} className={`text-center glass-card p-8 rounded-2xl fade-in-up delay-${stat.delay}`}>
+                <p className="text-5xl font-bold mb-3 text-gradient stat-number">{stat.number}</p>
+                <p className="text-gray-400 font-medium">{stat.label}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
