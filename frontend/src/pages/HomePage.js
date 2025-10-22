@@ -93,64 +93,75 @@ const HomePage = () => {
         </nav>
       </header>
 
-      {/* Premium Hero Section */}
-      <section className="container mx-auto px-6 pt-32 pb-24">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="space-y-8">
-              <div className="fade-in-up">
-                <div className="badge-premium mb-6">
-                  🎓 Empowering 300+ Schools
-                </div>
-                <h1 className="text-6xl lg:text-7xl font-bold leading-[1.1] mb-6">
-                  Transform Education in{' '}
-                  <span className="text-gradient">Konaseema</span>
-                </h1>
-                <p className="text-xl text-gray-400 leading-relaxed max-w-xl">
-                  A world-class digital platform connecting students, alumni, and educators across Zilla Parishad schools in Andhra Pradesh.
-                </p>
-              </div>
-              <div className="flex flex-wrap gap-4 fade-in-up delay-200">
-                <Link to="/schools" data-testid="hero-explore-btn">
-                  <Button className="btn-premium text-white px-8 py-4 text-base rounded-2xl">
-                    Explore Schools
-                  </Button>
-                </Link>
-                <Link to="/alumni" data-testid="hero-join-btn">
-                  <Button variant="outline" className="border border-white/20 bg-white/5 text-white hover:bg-white/10 px-8 py-4 text-base rounded-2xl backdrop-blur-sm">
-                    Join Alumni Network
-                  </Button>
-                </Link>
+      {/* Inspirational Hero Section - Harvard/MIT Style */}
+      <section className="relative overflow-hidden pt-24 pb-32">
+        {/* Video/Image Background Overlay */}
+        <div className="absolute inset-0 opacity-20">
+          <img
+            src="https://images.unsplash.com/photo-1639910232134-8cc7505c4e64?w=1920"
+            alt="Campus background"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0" style={{background: 'linear-gradient(to bottom, var(--charcoal), transparent, var(--charcoal))'}}></div>
+        </div>
+        
+        <div className="container mx-auto px-6 relative">
+          <div className="max-w-5xl mx-auto text-center space-y-12">
+            <div className="fade-in-up">
+              <div className="inline-flex items-center px-5 py-2 rounded-full mb-8 border" style={{
+                background: 'rgba(197, 165, 114, 0.1)',
+                borderColor: 'var(--gold)'
+              }}>
+                <span style={{color: 'var(--gold)'}} className="text-sm font-semibold">
+                  🎓 Empowering 300+ Schools Since 1947
+                </span>
               </div>
               
-              {/* Mini Stats */}
-              <div className="flex gap-8 pt-6 fade-in-up delay-300">
-                <div>
-                  <p className="text-3xl font-bold text-white stat-number">300+</p>
-                  <p className="text-sm text-gray-400">Schools</p>
-                </div>
-                <div>
-                  <p className="text-3xl font-bold text-white stat-number">100K+</p>
-                  <p className="text-sm text-gray-400">Students</p>
-                </div>
-                <div>
-                  <p className="text-3xl font-bold text-white stat-number">22</p>
-                  <p className="text-sm text-gray-400">Mandals</p>
-                </div>
-              </div>
+              <h1 className="text-6xl lg:text-7xl font-bold leading-[1.15] mb-8" style={{
+                fontFamily: 'Libre Baskerville',
+                color: 'var(--ivory)'
+              }}>
+                Building Tomorrow's Leaders,{' '}
+                <span style={{color: 'var(--gold)'}}>Today</span>
+              </h1>
+              
+              <p className="text-2xl leading-relaxed max-w-3xl mx-auto mb-12" style={{color: 'var(--ivory)', opacity: 0.85}}>
+                Join a legacy of excellence. Connect with alumni, mentors, and educators transforming education across Konaseema District, Andhra Pradesh.
+              </p>
             </div>
             
-            <div className="relative fade-in-up delay-400">
-              <div className="relative overflow-hidden rounded-3xl premium-card p-1">
-                <img
-                  src="https://images.unsplash.com/photo-1639910232134-8cc7505c4e64?w=800"
-                  alt="Indian government school building"
-                  className="w-full h-[500px] object-cover rounded-3xl image-hover"
-                />
+            <div className="flex flex-wrap gap-6 justify-center fade-in-up delay-200">
+              <Link to="/schools" data-testid="hero-explore-btn">
+                <Button className="text-white px-10 py-5 text-lg rounded-xl font-semibold shadow-2xl hover:scale-105 transition-transform" style={{
+                  background: 'linear-gradient(135deg, var(--crimson) 0%, var(--maroon) 100%)'
+                }}>
+                  Explore Schools
+                </Button>
+              </Link>
+              <Link to="/alumni" data-testid="hero-join-btn">
+                <Button variant="outline" className="px-10 py-5 text-lg rounded-xl font-semibold backdrop-blur-sm hover:scale-105 transition-transform" style={{
+                  border: '2px solid var(--gold)',
+                  color: 'var(--gold)',
+                  background: 'rgba(197, 165, 114, 0.1)'
+                }}>
+                  Join Alumni Network →
+                </Button>
+              </Link>
+            </div>
+            
+            {/* Impact Stats */}
+            <div className="grid md:grid-cols-3 gap-8 pt-16 fade-in-up delay-300">
+              <div className="glass-card p-8 rounded-2xl">
+                <p className="text-5xl font-bold impact-number mb-2">300+</p>
+                <p className="text-sm font-semibold" style={{color: 'var(--ivory)', opacity: 0.7}}>SCHOOLS CONNECTED</p>
               </div>
-              <div className="absolute -bottom-6 -left-6 glass-card p-6 rounded-2xl shadow-2xl float">
-                <p className="text-5xl font-bold text-gradient">300+</p>
-                <p className="text-gray-300 font-medium mt-2">Schools Connected</p>
+              <div className="glass-card p-8 rounded-2xl">
+                <p className="text-5xl font-bold impact-number mb-2">100K+</p>
+                <p className="text-sm font-semibold" style={{color: 'var(--ivory)', opacity: 0.7}}>STUDENTS & ALUMNI</p>
+              </div>
+              <div className="glass-card p-8 rounded-2xl">
+                <p className="text-5xl font-bold impact-number mb-2">75+</p>
+                <p className="text-sm font-semibold" style={{color: 'var(--ivory)', opacity: 0.7}}>YEARS OF LEGACY</p>
               </div>
             </div>
           </div>
