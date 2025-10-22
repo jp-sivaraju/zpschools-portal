@@ -43,32 +43,51 @@ const HomePage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen text-white" style={{backgroundColor: 'var(--charcoal)'}}>
       <div className="gradient-mesh"></div>
       
-      {/* Premium Header */}
-      <header className="glass-card sticky top-0 z-50 border-b border-white/10">
+      {/* Academic Header with School Seal */}
+      <header className="glass-card sticky-nav top-0 z-50 border-b" style={{borderColor: 'rgba(197, 165, 114, 0.15)'}}>
         <nav className="container mx-auto px-6 py-5 flex justify-between items-center">
           <Link to="/" className="flex items-center space-x-4">
-            <div className="w-11 h-11 bg-gradient-to-br from-blue-500 to-violet-600 rounded-xl flex items-center justify-center shadow-lg shadow-blue-500/20">
-              <span className="text-white font-bold text-lg">ZP</span>
+            <div className="w-14 h-14 rounded-full flex items-center justify-center border-2 shadow-xl" style={{
+              background: 'linear-gradient(135deg, var(--crimson) 0%, var(--maroon) 100%)',
+              borderColor: 'var(--gold)'
+            }}>
+              <span className="text-white font-bold text-xl" style={{fontFamily: 'Libre Baskerville'}}>ZP</span>
             </div>
             <div>
-              <h1 className="text-lg font-semibold text-white tracking-tight">ZP School Portal</h1>
-              <p className="text-xs text-gray-400">Konaseema District</p>
+              <h1 className="text-lg font-bold tracking-tight" style={{color: 'var(--ivory)', fontFamily: 'Libre Baskerville'}}>
+                Zilla Parishad Schools
+              </h1>
+              <p className="text-xs" style={{color: 'var(--gold)'}}>Konaseema District • Est. 1947</p>
             </div>
           </Link>
           <div className="flex items-center space-x-8">
-            <Link to="/schools" className="text-gray-300 hover:text-white font-medium transition-all hover:translate-y-[-1px]" data-testid="nav-schools">Schools</Link>
-            <Link to="/alumni" className="text-gray-300 hover:text-white font-medium transition-all hover:translate-y-[-1px]" data-testid="nav-alumni">Alumni</Link>
-            <Link to="/events" className="text-gray-300 hover:text-white font-medium transition-all hover:translate-y-[-1px]" data-testid="nav-events">Events</Link>
-            <Link to="/donations" className="text-gray-300 hover:text-white font-medium transition-all hover:translate-y-[-1px]" data-testid="nav-donate">Support</Link>
+            <Link to="/schools" className="font-medium transition-all hover:translate-y-[-1px]" style={{color: 'var(--ivory)'}} data-testid="nav-schools">
+              Schools
+            </Link>
+            <Link to="/alumni" className="font-medium transition-all hover:translate-y-[-1px]" style={{color: 'var(--ivory)'}} data-testid="nav-alumni">
+              Alumni
+            </Link>
+            <Link to="/events" className="font-medium transition-all hover:translate-y-[-1px]" style={{color: 'var(--ivory)'}} data-testid="nav-events">
+              Events
+            </Link>
+            <Link to="/donations" className="font-medium transition-all hover:translate-y-[-1px]" style={{color: 'var(--gold)'}} data-testid="nav-donate">
+              Give Back
+            </Link>
             {user ? (
               <Link to="/dashboard" data-testid="nav-dashboard">
-                <Button className="btn-premium text-white">Dashboard</Button>
+                <Button className="text-white px-6 py-2.5 rounded-lg font-semibold" style={{
+                  background: 'linear-gradient(135deg, var(--crimson) 0%, var(--maroon) 100%)',
+                  boxShadow: '0 4px 16px rgba(165, 28, 48, 0.3)'
+                }}>Dashboard</Button>
               </Link>
             ) : (
-              <Button onClick={() => setShowAuth(true)} className="btn-premium text-white" data-testid="nav-login">Sign In</Button>
+              <Button onClick={() => setShowAuth(true)} className="text-white px-6 py-2.5 rounded-lg font-semibold" style={{
+                background: 'linear-gradient(135deg, var(--crimson) 0%, var(--maroon) 100%)',
+                boxShadow: '0 4px 16px rgba(165, 28, 48, 0.3)'
+              }} data-testid="nav-login">Sign In</Button>
             )}
           </div>
         </nav>
