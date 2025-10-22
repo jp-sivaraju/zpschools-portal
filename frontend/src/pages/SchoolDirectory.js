@@ -32,54 +32,104 @@ const SchoolDirectory = () => {
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-orange-50">
+    <div className="min-h-screen" style={{backgroundColor: 'var(--charcoal)'}}>
+      <div className="gradient-mesh"></div>
       <NavBar />
-      <div className="container mx-auto px-4 py-8">
-        <div className="max-w-6xl mx-auto">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">School Directory</h1>
-          <p className="text-lg text-gray-600 mb-8">Explore 300+ Zilla Parishad schools across Konaseema District</p>
+      
+      <div className="container mx-auto px-6 py-16 relative">
+        <div className="max-w-7xl mx-auto">
+          {/* Header */}
+          <div className="text-center mb-16">
+            <div className="inline-block px-4 py-2 rounded-full mb-6" style={{
+              background: 'rgba(197, 165, 114, 0.15)',
+              border: '1px solid var(--gold)'
+            }}>
+              <span style={{color: 'var(--gold)'}} className="text-sm font-semibold">
+                📚 300+ Schools
+              </span>
+            </div>
+            <h1 className="text-5xl md:text-6xl font-bold mb-6" style={{
+              fontFamily: 'Libre Baskerville',
+              color: 'var(--ivory)'
+            }}>
+              School Directory
+            </h1>
+            <p className="text-xl" style={{color: 'var(--ivory)', opacity: 0.7}}>
+              Explore Zilla Parishad schools across Konaseema District
+            </p>
+          </div>
 
-          <div className="mb-8">
+          {/* Search */}
+          <div className="max-w-2xl mx-auto mb-16">
             <Input
               type="text"
               placeholder="Search schools by name..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="max-w-md"
+              className="w-full newsletter-input text-lg py-6"
+              style={{
+                background: 'rgba(255, 255, 255, 0.05)',
+                border: '1px solid rgba(197, 165, 114, 0.2)',
+                color: 'var(--ivory)'
+              }}
               data-testid="school-search-input"
             />
           </div>
 
           {loading ? (
-            <div className="grid md:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-3 gap-8">
               {[...Array(6)].map((_, i) => (
-                <div key={i} className="skeleton h-64 rounded-xl"></div>
+                <div key={i} className="skeleton-premium h-80 rounded-2xl"></div>
               ))}
             </div>
           ) : filteredSchools.length > 0 ? (
-            <div className="grid md:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-3 gap-8">
               {filteredSchools.map((school) => (
                 <Link to={`/schools/${school.id}`} key={school.id}>
-                  <Card className="card-hover h-full" data-testid={`school-card-${school.id}`}>
-                    <div className="h-40 bg-gradient-to-br from-blue-500 to-orange-400 rounded-t-xl"></div>
-                    <CardHeader>
-                      <CardTitle className="text-xl">{school.name}</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-gray-600 text-sm mb-2">{school.address || 'Konaseema District'}</p>
-                      <p className="text-blue-600 font-medium">View Details →</p>
-                    </CardContent>
-                  </Card>
+                  <div className="glass-card p-8 rounded-2xl hover:scale-105 transition-all duration-300 h-full" data-testid={`school-card-${school.id}`}>
+                    {/* School Icon */}
+                    <div className="w-20 h-20 rounded-full mx-auto mb-6 flex items-center justify-center" style={{
+                      background: 'linear-gradient(135deg, var(--crimson), var(--maroon))',
+                      border: '3px solid var(--gold)'
+                    }}>
+                      <span className="text-3xl">🏫</span>
+                    </div>
+                    
+                    <h3 className="text-2xl font-bold text-center mb-4" style={{
+                      fontFamily: 'Libre Baskerville',
+                      color: 'var(--ivory)'
+                    }}>
+                      {school.name}
+                    </h3>
+                    
+                    <p className="text-center mb-4" style={{color: 'var(--gold)', fontSize: '14px'}}>
+                      {school.address || 'Konaseema District, AP'}
+                    </p>
+                    
+                    <div className="text-center">
+                      <span className="inline-block px-4 py-2 rounded-full text-sm font-semibold" style={{
+                        background: 'rgba(197, 165, 114, 0.15)',
+                        color: 'var(--gold)'
+                      }}>
+                        View Details →
+                      </span>
+                    </div>
+                  </div>
                 </Link>
               ))}
             </div>
           ) : (
-            <Card className="text-center py-12">
-              <CardContent>
-                <p className="text-gray-600 text-lg">No schools found. Check back soon!</p>
-                <p className="text-sm text-gray-500 mt-2">Our database is being updated with 300+ schools.</p>
-              </CardContent>
-            </Card>
+            <div className="text-center py-20">
+              <div className="glass-card p-16 rounded-3xl max-w-2xl mx-auto">
+                <div className="text-6xl mb-6">🏫</div>
+                <h3 className="text-3xl font-bold mb-4" style={{fontFamily: 'Libre Baskerville', color: 'var(--ivory)'}}>
+                  {search ? 'No schools found' : 'Schools Coming Soon'}
+                </h3>
+                <p style={{color: 'var(--ivory)', opacity: 0.7}}>
+                  {search ? 'Try a different search term' : 'Our database is being updated with 300+ schools.'}
+                </p>
+              </div>
+            </div>
           )}
         </div>
       </div>
