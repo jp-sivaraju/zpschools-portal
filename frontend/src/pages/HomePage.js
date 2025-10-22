@@ -566,48 +566,116 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* Premium Footer */}
-      <footer className="border-t border-white/10 bg-black/50 backdrop-blur-xl">
-        <div className="container mx-auto px-6 py-16">
-          <div className="grid md:grid-cols-4 gap-12 mb-12">
-            <div>
-              <div className="flex items-center space-x-3 mb-6">
-                <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-violet-600 rounded-xl flex items-center justify-center">
-                  <span className="text-white font-bold">ZP</span>
-                </div>
-                <span className="text-lg font-semibold">ZP School Portal</span>
-              </div>
-              <p className="text-gray-400 leading-relaxed">
-                Empowering education across Konaseema District, Andhra Pradesh.
-              </p>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4 text-white">Quick Links</h4>
-              <ul className="space-y-3">
-                <li><Link to="/schools" className="text-gray-400 hover:text-white transition-colors">Schools</Link></li>
-                <li><Link to="/alumni" className="text-gray-400 hover:text-white transition-colors">Alumni</Link></li>
-                <li><Link to="/events" className="text-gray-400 hover:text-white transition-colors">Events</Link></li>
-                <li><Link to="/donations" className="text-gray-400 hover:text-white transition-colors">Support</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4 text-white">Resources</h4>
-              <ul className="space-y-3">
-                <li><Link to="/" className="text-gray-400 hover:text-white transition-colors">Contact Us</Link></li>
-                <li><Link to="/" className="text-gray-400 hover:text-white transition-colors">Help Center</Link></li>
-                <li><Link to="/" className="text-gray-400 hover:text-white transition-colors">Privacy Policy</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4 text-white">Connect</h4>
-              <p className="text-gray-400 mb-2">info@zpschools.ap.gov.in</p>
-              <p className="text-gray-400">+91 12345 67890</p>
+      {/* Premium Academic Footer */}
+      <footer className="border-t backdrop-blur-xl" style={{borderColor: 'rgba(197, 165, 114, 0.15)', background: 'rgba(0, 0, 0, 0.5)'}}>
+        <div className="container mx-auto px-6 py-20">
+          {/* Newsletter Section */}
+          <div className="max-w-4xl mx-auto text-center mb-16">
+            <h3 className="text-3xl font-bold mb-4" style={{fontFamily: 'Libre Baskerville', color: 'var(--ivory)'}}>
+              Stay Connected
+            </h3>
+            <p className="mb-8" style={{color: 'var(--ivory)', opacity: 0.7}}>
+              Receive updates on alumni events, school news, and opportunities to give back
+            </p>
+            <div className="flex gap-4 max-w-md mx-auto">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="newsletter-input flex-1"
+              />
+              <Button className="px-8 py-3 rounded-xl font-semibold" style={{
+                background: 'linear-gradient(135deg, var(--crimson), var(--maroon))',
+                color: 'white'
+              }}>
+                Subscribe
+              </Button>
             </div>
           </div>
-          <div className="premium-divider my-8"></div>
-          <div className="flex flex-col md:flex-row justify-between items-center text-gray-400 text-sm">
-            <p>&copy; 2025 ZP School Portal, Konaseema District. All rights reserved.</p>
-            <p className="mt-4 md:mt-0">Built with ❤️ for education</p>
+
+          {/* Footer Links */}
+          <div className="grid md:grid-cols-5 gap-12 mb-16">
+            <div className="md:col-span-2">
+              <div className="flex items-center space-x-3 mb-6">
+                <div className="w-12 h-12 rounded-full flex items-center justify-center border-2" style={{
+                  background: 'linear-gradient(135deg, var(--crimson), var(--maroon))',
+                  borderColor: 'var(--gold)'
+                }}>
+                  <span className="text-white font-bold" style={{fontFamily: 'Libre Baskerville'}}>ZP</span>
+                </div>
+                <div>
+                  <span className="text-lg font-bold block" style={{color: 'var(--ivory)', fontFamily: 'Libre Baskerville'}}>
+                    Zilla Parishad Schools
+                  </span>
+                  <span className="text-sm" style={{color: 'var(--gold)'}}>Est. 1947</span>
+                </div>
+              </div>
+              <p className="leading-relaxed mb-6" style={{color: 'var(--ivory)', opacity: 0.7}}>
+                Empowering education and building futures across Konaseema District, Andhra Pradesh.
+              </p>
+              {/* Social Icons */}
+              <div className="flex gap-4">
+                {['Facebook', 'Twitter', 'LinkedIn', 'Instagram'].map((social) => (
+                  <button key={social} className="w-10 h-10 rounded-full flex items-center justify-center transition-all hover:scale-110" style={{
+                    background: 'rgba(197, 165, 114, 0.1)',
+                    border: '1px solid var(--gold)'
+                  }}>
+                    <span className="text-sm" style={{color: 'var(--gold)'}}>{social[0]}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+            
+            <div>
+              <h4 className="font-bold mb-4" style={{color: 'var(--ivory)', fontFamily: 'Libre Baskerville'}}>Explore</h4>
+              <ul className="space-y-3">
+                <li><Link to="/schools" className="transition-colors" style={{color: 'var(--ivory)', opacity: 0.7}} onMouseEnter={(e) => e.target.style.color = 'var(--gold)'} onMouseLeave={(e) => e.target.style.color = 'var(--ivory)'}>Schools Directory</Link></li>
+                <li><Link to="/alumni" className="transition-colors" style={{color: 'var(--ivory)', opacity: 0.7}} onMouseEnter={(e) => e.target.style.color = 'var(--gold)'} onMouseLeave={(e) => e.target.style.color = 'var(--ivory)'}>Alumni Network</Link></li>
+                <li><Link to="/events" className="transition-colors" style={{color: 'var(--ivory)', opacity: 0.7}} onMouseEnter={(e) => e.target.style.color = 'var(--gold)'} onMouseLeave={(e) => e.target.style.color = 'var(--ivory)'}>Events Calendar</Link></li>
+                <li><Link to="/forum" className="transition-colors" style={{color: 'var(--ivory)', opacity: 0.7}} onMouseEnter={(e) => e.target.style.color = 'var(--gold)'} onMouseLeave={(e) => e.target.style.color = 'var(--ivory)'}>Community Forum</Link></li>
+              </ul>
+            </div>
+            
+            <div>
+              <h4 className="font-bold mb-4" style={{color: 'var(--ivory)', fontFamily: 'Libre Baskerville'}}>Get Involved</h4>
+              <ul className="space-y-3">
+                <li><Link to="/donations" className="transition-colors" style={{color: 'var(--ivory)', opacity: 0.7}} onMouseEnter={(e) => e.target.style.color = 'var(--gold)'} onMouseLeave={(e) => e.target.style.color = 'var(--ivory)'}>Give Back</Link></li>
+                <li><Link to="/alumni" className="transition-colors" style={{color: 'var(--ivory)', opacity: 0.7}} onMouseEnter={(e) => e.target.style.color = 'var(--gold)'} onMouseLeave={(e) => e.target.style.color = 'var(--ivory)'}>Become a Mentor</Link></li>
+                <li><Link to="/" className="transition-colors" style={{color: 'var(--ivory)', opacity: 0.7}} onMouseEnter={(e) => e.target.style.color = 'var(--gold)'} onMouseLeave={(e) => e.target.style.color = 'var(--ivory)'}>Volunteer</Link></li>
+                <li><Link to="/" className="transition-colors" style={{color: 'var(--ivory)', opacity: 0.7}} onMouseEnter={(e) => e.target.style.color = 'var(--gold)'} onMouseLeave={(e) => e.target.style.color = 'var(--ivory)'}>Career Opportunities</Link></li>
+              </ul>
+            </div>
+            
+            <div>
+              <h4 className="font-bold mb-4" style={{color: 'var(--ivory)', fontFamily: 'Libre Baskerville'}}>Contact</h4>
+              <ul className="space-y-3">
+                <li className="flex items-start gap-2">
+                  <span style={{color: 'var(--gold)'}}>📧</span>
+                  <span style={{color: 'var(--ivory)', opacity: 0.7}}>info@zpschools.ap.gov.in</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span style={{color: 'var(--gold)'}}>📞</span>
+                  <span style={{color: 'var(--ivory)', opacity: 0.7}}>+91 12345 67890</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span style={{color: 'var(--gold)'}}>📍</span>
+                  <span style={{color: 'var(--ivory)', opacity: 0.7}}>Amalapuram, Konaseema District, AP</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          
+          <div className="premium-divider my-12"></div>
+          
+          {/* Bottom Footer */}
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-sm" style={{color: 'var(--ivory)', opacity: 0.6}}>
+              © 2025 Zilla Parishad Schools, Konaseema District. All rights reserved.
+            </p>
+            <div className="flex gap-6 text-sm">
+              <Link to="/" className="transition-colors" style={{color: 'var(--ivory)', opacity: 0.6}} onMouseEnter={(e) => e.target.style.color = 'var(--gold)'} onMouseLeave={(e) => e.target.style.opacity = '0.6'}>Privacy Policy</Link>
+              <Link to="/" className="transition-colors" style={{color: 'var(--ivory)', opacity: 0.6}} onMouseEnter={(e) => e.target.style.color = 'var(--gold)'} onMouseLeave={(e) => e.target.style.opacity = '0.6'}>Terms of Service</Link>
+              <Link to="/" className="transition-colors" style={{color: 'var(--ivory)', opacity: 0.6}} onMouseEnter={(e) => e.target.style.color = 'var(--gold)'} onMouseLeave={(e) => e.target.style.opacity = '0.6'}>Accessibility</Link>
+            </div>
           </div>
         </div>
       </footer>
