@@ -168,22 +168,84 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* Premium Stats Section */}
-      <section className="py-24 relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-500/5 to-transparent"></div>
-        <div className="container mx-auto px-6 relative">
-          <div className="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto">
-            {[
-              { number: '300+', label: 'ZP Schools', delay: '0' },
-              { number: '100K+', label: 'Students & Alumni', delay: '100' },
-              { number: '22', label: 'Mandals', delay: '200' },
-              { number: '44', label: 'MEO Officers', delay: '300' }
-            ].map((stat, idx) => (
-              <div key={idx} className={`text-center glass-card p-8 rounded-2xl fade-in-up delay-${stat.delay}`}>
-                <p className="text-5xl font-bold mb-3 text-gradient stat-number">{stat.number}</p>
-                <p className="text-gray-400 font-medium">{stat.label}</p>
+      {/* Featured Alumni Success Stories - Harvard Style */}
+      <section className="py-32 relative">
+        <div className="container mx-auto px-6">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-20">
+              <h2 className="text-5xl font-bold mb-6" style={{fontFamily: 'Libre Baskerville', color: 'var(--ivory)'}}>
+                Alumni Making an <span style={{color: 'var(--gold)'}}>Impact</span>
+              </h2>
+              <p className="text-xl" style={{color: 'var(--ivory)', opacity: 0.7}}>
+                Stories of excellence from our global community
+              </p>
+            </div>
+
+            <div className="magazine-grid">
+              {/* Featured Story */}
+              <div className="magazine-feature">
+                <div className="featured-alumni-card h-full relative rounded-2xl overflow-hidden group">
+                  <img
+                    src="https://images.unsplash.com/photo-1714194821788-6fd3634f01f1?w=800"
+                    alt="Featured Alumni"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
+                  <div className="absolute bottom-0 left-0 right-0 p-10">
+                    <div className="inline-block px-4 py-1 rounded-full mb-4" style={{background: 'var(--crimson)', color: 'white'}}>
+                      <span className="text-sm font-semibold">Featured Alumni</span>
+                    </div>
+                    <h3 className="text-4xl font-bold mb-4" style={{fontFamily: 'Libre Baskerville', color: 'var(--ivory)'}}>
+                      Dr. Ramesh Kumar
+                    </h3>
+                    <p className="text-lg mb-2" style={{color: 'var(--gold)'}}>
+                      Class of 1995 • ZPHS Amalapuram
+                    </p>
+                    <p className="text-gray-300 text-lg">
+                      Leading cancer research at Johns Hopkins University, published 50+ papers, mentoring 100+ students
+                    </p>
+                  </div>
+                </div>
               </div>
-            ))}
+
+              {/* Side Stories */}
+              <div className="magazine-aside space-y-6">
+                {[
+                  { name: 'Priya Sharma', batch: '2005', role: 'CEO, Tech Startup', achievement: '$50M Series B' },
+                  { name: 'Anil Reddy', batch: '1998', role: 'IAS Officer', achievement: 'Dist. Collector' }
+                ].map((alumni, idx) => (
+                  <div key={idx} className="glass-card p-6 rounded-2xl hover:scale-105 transition-all cursor-pointer">
+                    <div className="flex items-center gap-4 mb-4">
+                      <div className="w-16 h-16 rounded-full" style={{background: 'linear-gradient(135deg, var(--crimson), var(--maroon))'}}></div>
+                      <div>
+                        <h4 className="font-bold text-lg" style={{color: 'var(--ivory)'}}>
+                          {alumni.name}
+                        </h4>
+                        <p className="text-sm" style={{color: 'var(--gold)'}}>Class of {alumni.batch}</p>
+                      </div>
+                    </div>
+                    <p className="font-semibold mb-2" style={{color: 'var(--ivory)', opacity: 0.9}}>{alumni.role}</p>
+                    <p className="text-sm" style={{color: 'var(--ivory)', opacity: 0.7}}>{alumni.achievement}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Testimonial Quote */}
+            <div className="mt-20 max-w-4xl mx-auto">
+              <div className="testimonial-quote">
+                <p className="text-2xl leading-relaxed italic mb-6" style={{fontFamily: 'Crimson Text', color: 'var(--ivory)'}}>
+                  "The foundation I received at ZPHS shaped my entire career. Today, I'm proud to give back and mentor the next generation of leaders from my alma mater."
+                </p>
+                <div className="flex items-center gap-4">
+                  <div className="w-16 h-16 rounded-full" style={{background: 'linear-gradient(135deg, var(--crimson), var(--maroon))'}}></div>
+                  <div>
+                    <p className="font-bold" style={{color: 'var(--ivory)'}}>Dr. Ramesh Kumar</p>
+                    <p className="text-sm" style={{color: 'var(--gold)'}}>Research Scientist, Johns Hopkins</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
