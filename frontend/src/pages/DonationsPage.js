@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { API } from '../App';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -47,7 +46,7 @@ const DonationsPage = () => {
         ...formData,
         amount: parseFloat(formData.amount)
       });
-      toast.success('Donation successful! Thank you for your contribution.');
+      toast.success('Thank you for your generous contribution!');
       setShowDonateModal(false);
       setFormData({ donor_name: '', donor_email: '', amount: '', school_id: '', purpose: '' });
       fetchData();
@@ -59,194 +58,139 @@ const DonationsPage = () => {
   const totalDonations = donations.reduce((sum, d) => sum + d.amount, 0);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-orange-50">
+    <div className="min-h-screen" style={{backgroundColor: 'var(--charcoal)'}}>
+      <div className="gradient-mesh"></div>
       <NavBar />
-      <div className="container mx-auto px-4 py-8">
-        <div className="max-w-6xl mx-auto">
-          {/* Hero */}
-          <div className="bg-gradient-to-r from-blue-600 to-orange-500 rounded-3xl p-12 text-white mb-8">
-            <h1 className="text-5xl font-bold mb-4">Support Our Schools</h1>
-            <p className="text-blue-100 text-lg mb-6">Your contribution makes a difference in the lives of thousands of students</p>
-            <Button
-              onClick={() => setShowDonateModal(true)}
-              className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-6 text-lg rounded-full"
-              data-testid="donate-now-btn"
-            >
-              Donate Now
-            </Button>
-          </div>
-
-          {/* Stats */}
-          <div className="grid md:grid-cols-3 gap-6 mb-8">
-            <Card className="card-hover">
-              <CardHeader>
-                <CardTitle className="text-sm text-gray-600">Total Donations</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-4xl font-bold text-blue-600" data-testid="total-donations">₹{totalDonations.toLocaleString()}</p>
-              </CardContent>
-            </Card>
-            <Card className="card-hover">
-              <CardHeader>
-                <CardTitle className="text-sm text-gray-600">Number of Donors</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-4xl font-bold text-green-600" data-testid="donor-count">{donations.length}</p>
-              </CardContent>
-            </Card>
-            <Card className="card-hover">
-              <CardHeader>
-                <CardTitle className="text-sm text-gray-600">Schools Supported</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-4xl font-bold text-orange-600" data-testid="schools-supported">
-                  {new Set(donations.filter(d => d.school_id).map(d => d.school_id)).size}
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-
-          {/* Impact Section */}
-          <Card className="mb-8">
-            <CardHeader>
-              <CardTitle>Our Impact</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid md:grid-cols-2 gap-6">
-                <img
-                  src="https://images.unsplash.com/photo-1629273229664-11fabc0becc0?w=600"
-                  alt="Students studying"
-                  className="w-full h-64 object-cover rounded-xl"
-                />
-                <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-4">How Your Donation Helps</h3>
-                  <ul className="space-y-3 text-gray-600">
-                    <li className="flex items-start space-x-3">
-                      <span className="text-blue-600 font-bold">✓</span>
-                      <span>Improve infrastructure and facilities</span>
-                    </li>
-                    <li className="flex items-start space-x-3">
-                      <span className="text-blue-600 font-bold">✓</span>
-                      <span>Provide books and learning materials</span>
-                    </li>
-                    <li className="flex items-start space-x-3">
-                      <span className="text-blue-600 font-bold">✓</span>
-                      <span>Support technology and digital learning</span>
-                    </li>
-                    <li className="flex items-start space-x-3">
-                      <span className="text-blue-600 font-bold">✓</span>
-                      <span>Fund scholarships for deserving students</span>
-                    </li>
-                    <li className="flex items-start space-x-3">
-                      <span className="text-blue-600 font-bold">✓</span>
-                      <span>Organize educational programs and workshops</span>
-                    </li>
-                  </ul>
-                </div>
+      
+      <div className="container mx-auto px-6 py-16 relative">
+        <div className="max-w-7xl mx-auto">
+          {/* Hero Section */}
+          <div className="glass-card rounded-3xl p-16 mb-16 relative overflow-hidden text-center">
+            <div className="absolute inset-0 opacity-10" style={{background: 'linear-gradient(135deg, var(--crimson), var(--maroon)'}}></div>
+            <div className="relative">
+              <div className="inline-block px-4 py-2 rounded-full mb-6" style={{
+                background: 'rgba(197, 165, 114, 0.15)',
+                border: '1px solid var(--gold)'
+              }}>
+                <span style={{color: 'var(--gold)'}} className="text-sm font-semibold">
+                  💝 Make an Impact
+                </span>
               </div>
-            </CardContent>
-          </Card>
+              <h1 className="text-6xl font-bold mb-6" style={{fontFamily: 'Libre Baskerville', color: 'var(--ivory)'}}>
+                Give Back to Your <span style={{color: 'var(--gold)'}}>Alma Mater</span>
+              </h1>
+              <p className="text-2xl mb-10 max-w-3xl mx-auto" style={{color: 'var(--ivory)', opacity: 0.8}}>
+                Your contribution transforms lives and builds futures for thousands of students across Konaseema
+              </p>
+              <Button
+                onClick={() => setShowDonateModal(true)}
+                className="text-white px-12 py-6 text-xl rounded-xl font-semibold shadow-2xl hover:scale-105 transition-transform"
+                style={{background: 'linear-gradient(135deg, var(--crimson), var(--maroon))'}}
+                data-testid="donate-now-btn"
+              >
+                Donate Now
+              </Button>
+            </div>
+          </div>
+
+          {/* Impact Stats */}
+          <div className="grid md:grid-cols-3 gap-8 mb-20">
+            <div className="glass-card p-10 rounded-3xl text-center hover:scale-105 transition-all">
+              <div className="text-5xl mb-4">💰</div>
+              <p className="text-5xl font-bold mb-3 impact-number" data-testid="total-donations">₹{totalDonations.toLocaleString()}</p>
+              <p className="text-sm font-semibold" style={{color: 'var(--ivory)', opacity: 0.7}}>TOTAL CONTRIBUTIONS</p>
+            </div>
+            <div className="glass-card p-10 rounded-3xl text-center hover:scale-105 transition-all">
+              <div className="text-5xl mb-4">🤝</div>
+              <p className="text-5xl font-bold mb-3 impact-number" data-testid="donor-count">{donations.length}</p>
+              <p className="text-sm font-semibold" style={{color: 'var(--ivory)', opacity: 0.7}}>GENEROUS DONORS</p>
+            </div>
+            <div className="glass-card p-10 rounded-3xl text-center hover:scale-105 transition-all">
+              <div className="text-5xl mb-4">🏫</div>
+              <p className="text-5xl font-bold mb-3 impact-number" data-testid="schools-supported">
+                {new Set(donations.filter(d => d.school_id).map(d => d.school_id)).size}
+              </p>
+              <p className="text-sm font-semibold" style={{color: 'var(--ivory)', opacity: 0.7}}>SCHOOLS SUPPORTED</p>
+            </div>
+          </div>
 
           {/* Recent Donations */}
-          <Card>
-            <CardHeader>
-              <CardTitle>Recent Donations</CardTitle>
-            </CardHeader>
-            <CardContent>
-              {donations.length > 0 ? (
-                <div className="space-y-3">
-                  {donations.slice(0, 10).map((donation) => (
-                    <div key={donation.id} className="flex justify-between items-center p-4 bg-gradient-to-r from-blue-50 to-white rounded-lg" data-testid={`donation-${donation.id}`}>
-                      <div>
-                        <p className="font-medium text-gray-900">{donation.donor_name}</p>
-                        <p className="text-sm text-gray-600">{donation.purpose || 'General Support'}</p>
-                      </div>
-                      <div className="text-right">
-                        <p className="font-bold text-blue-600">₹{donation.amount.toLocaleString()}</p>
-                        <p className="text-xs text-gray-500">{new Date(donation.created_at).toLocaleDateString()}</p>
-                      </div>
+          <div className="glass-card p-12 rounded-3xl">
+            <h2 className="text-3xl font-bold mb-8" style={{fontFamily: 'Libre Baskerville', color: 'var(--ivory)'}}>Recent Contributors</h2>
+            {donations.length > 0 ? (
+              <div className="space-y-4">
+                {donations.slice(0, 10).map((donation) => (
+                  <div key={donation.id} className="leaderboard-item" data-testid={`donation-${donation.id}`}>
+                    <div className="w-12 h-12 rounded-full flex items-center justify-center mr-4" style={{background: 'linear-gradient(135deg, var(--crimson), var(--maroon))'}}>
+                      <span className="text-white text-xl">💝</span>
                     </div>
-                  ))}
-                </div>
-              ) : (
-                <p className="text-gray-600 text-center py-8">No donations yet. Be the first to contribute!</p>
-              )}
-            </CardContent>
-          </Card>
+                    <div className="flex-1">
+                      <p className="font-bold" style={{color: 'var(--ivory)'}}>{donation.donor_name}</p>
+                      <p className="text-sm" style={{color: 'var(--ivory)', opacity: 0.7}}>{donation.purpose || 'General Support'}</p>
+                    </div>
+                    <div className="text-right">
+                      <p className="text-2xl font-bold" style={{color: 'var(--gold)'}}>₹{donation.amount.toLocaleString()}</p>
+                      <p className="text-xs" style={{color: 'var(--ivory)', opacity: 0.6}}>{new Date(donation.created_at).toLocaleDateString()}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p className="text-center py-8" style={{color: 'var(--ivory)', opacity: 0.7}}>Be the first to contribute!</p>
+            )}
+          </div>
         </div>
       </div>
 
       {/* Donation Modal */}
       <Dialog open={showDonateModal} onOpenChange={setShowDonateModal}>
-        <DialogContent className="sm:max-w-md" data-testid="donate-dialog">
+        <DialogContent className="sm:max-w-md bg-black/95 border border-white/10 text-white backdrop-blur-xl" data-testid="donate-dialog">
           <DialogHeader>
-            <DialogTitle>Make a Donation</DialogTitle>
-            <DialogDescription>Support education in Konaseema District</DialogDescription>
+            <DialogTitle className="text-2xl font-bold" style={{fontFamily: 'Libre Baskerville'}}>Make a Contribution</DialogTitle>
+            <DialogDescription className="text-gray-400">Support education in Konaseema District</DialogDescription>
           </DialogHeader>
-          <form onSubmit={handleDonate} className="space-y-4">
+          <form onSubmit={handleDonate} className="space-y-5 mt-6">
             <div>
-              <Label htmlFor="donor_name">Your Name</Label>
+              <Label htmlFor="donor_name" className="text-gray-300 mb-2 block">Your Name</Label>
               <Input
                 id="donor_name"
                 data-testid="donor-name-input"
+                className="bg-white/5 border-white/10 text-white"
                 value={formData.donor_name}
                 onChange={(e) => setFormData({...formData, donor_name: e.target.value})}
                 required
               />
             </div>
             <div>
-              <Label htmlFor="donor_email">Email</Label>
+              <Label htmlFor="donor_email" className="text-gray-300 mb-2 block">Email</Label>
               <Input
                 id="donor_email"
                 type="email"
                 data-testid="donor-email-input"
+                className="bg-white/5 border-white/10 text-white"
                 value={formData.donor_email}
                 onChange={(e) => setFormData({...formData, donor_email: e.target.value})}
                 required
               />
             </div>
             <div>
-              <Label htmlFor="amount">Amount (₹)</Label>
+              <Label htmlFor="amount" className="text-gray-300 mb-2 block">Amount (₹)</Label>
               <Input
                 id="amount"
                 type="number"
                 min="1"
                 data-testid="donation-amount-input"
+                className="bg-white/5 border-white/10 text-white"
                 value={formData.amount}
                 onChange={(e) => setFormData({...formData, amount: e.target.value})}
                 required
               />
             </div>
-            <div>
-              <Label htmlFor="school_id">School (Optional)</Label>
-              <Select value={formData.school_id} onValueChange={(val) => setFormData({...formData, school_id: val})}>
-                <SelectTrigger data-testid="school-select">
-                  <SelectValue placeholder="Select a school or leave blank for general" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="">General Support</SelectItem>
-                  {schools.slice(0, 20).map(school => (
-                    <SelectItem key={school.id} value={school.id}>{school.name}</SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
-            <div>
-              <Label htmlFor="purpose">Purpose (Optional)</Label>
-              <Textarea
-                id="purpose"
-                data-testid="donation-purpose-input"
-                value={formData.purpose}
-                onChange={(e) => setFormData({...formData, purpose: e.target.value})}
-                placeholder="e.g., Library books, Sports equipment"
-              />
-            </div>
-            <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700" data-testid="submit-donation-btn">
+            <Button type="submit" className="w-full py-3 text-white rounded-xl font-semibold" style={{
+              background: 'linear-gradient(135deg, var(--crimson), var(--maroon))'
+            }} data-testid="submit-donation-btn">
               Donate ₹{formData.amount || '0'}
             </Button>
-            <p className="text-xs text-gray-500 text-center">
-              Note: This is a demo. Payment integration with Razorpay will be added in production.
-            </p>
           </form>
         </DialogContent>
       </Dialog>
