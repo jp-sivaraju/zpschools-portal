@@ -158,58 +158,93 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="container mx-auto px-4 py-20">
-        <h2 className="text-4xl font-bold text-center text-gray-900 mb-16">Portal Features</h2>
-        <div className="grid md:grid-cols-3 gap-8">
-          {[
-            {
-              title: 'School Directory',
-              description: 'Browse 300+ schools with detailed information, facilities, staff, and contact details.',
-              image: 'https://images.unsplash.com/flagged/photo-1574097656146-0b43b7660cb6?w=400',
-              link: '/schools'
-            },
-            {
-              title: 'Alumni Network',
-              description: 'Connect with alumni, participate in forums, mentoring programs, and support your school.',
-              image: 'https://images.unsplash.com/photo-1714194821788-6fd3634f01f1?w=400',
-              link: '/alumni'
-            },
-            {
-              title: 'Events & Programs',
-              description: 'Stay updated with school events, cultural activities, and educational programs.',
-              image: 'https://images.unsplash.com/photo-1731662262743-d4ed80b88672?w=400',
-              link: '/events'
-            },
-            {
-              title: 'Donation Portal',
-              description: 'Support schools with financial contributions for infrastructure and educational needs.',
-              image: 'https://images.unsplash.com/photo-1629273229664-11fabc0becc0?w=400',
-              link: '/donations'
-            },
-            {
-              title: 'Discussion Forums',
-              description: 'Engage in meaningful discussions, share experiences, and collaborate with peers.',
-              image: 'https://images.unsplash.com/photo-1572847748080-bac263fae977?w=400',
-              link: '/forum'
-            },
-            {
-              title: 'Admin Dashboard',
-              description: 'Comprehensive management tools for administrators and MEO officers.',
-              image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400',
-              link: '/admin'
-            }
-          ].map((feature, idx) => (
-            <Link to={feature.link} key={idx}>
-              <div className="card-hover bg-white rounded-2xl overflow-hidden shadow-lg" data-testid={`feature-card-${idx}`}>
-                <img src={feature.image} alt={feature.title} className="w-full h-48 object-cover" />
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">{feature.title}</h3>
-                  <p className="text-gray-600">{feature.description}</p>
+      {/* Bento Grid Features Section */}
+      <section className="container mx-auto px-6 py-32">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-20 fade-in-up">
+            <h2 className="text-5xl font-bold mb-6">
+              Everything You Need,{' '}
+              <span className="text-gradient">All in One Place</span>
+            </h2>
+            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+              A comprehensive platform designed for modern educational institutions
+            </p>
+          </div>
+
+          <div className="bento-grid">
+            {/* Large feature card */}
+            <Link to="/schools" className="bento-item-1">
+              <div className="premium-card h-full p-8 flex flex-col justify-between" data-testid="feature-card-0">
+                <div>
+                  <div className="badge-premium mb-6">300+ Schools</div>
+                  <h3 className="text-3xl font-bold mb-4">School Directory</h3>
+                  <p className="text-gray-400 text-lg mb-6">
+                    Comprehensive profiles with facilities, staff, contact details, and performance metrics.
+                  </p>
+                </div>
+                <div className="mt-auto">
+                  <img
+                    src="https://images.unsplash.com/flagged/photo-1574097656146-0b43b7660cb6?w=600"
+                    alt="School Directory"
+                    className="w-full h-64 object-cover rounded-2xl image-hover"
+                  />
                 </div>
               </div>
             </Link>
-          ))}
+
+            {/* Alumni Network */}
+            <Link to="/alumni" className="bento-item-2">
+              <div className="premium-card h-full p-8" data-testid="feature-card-1">
+                <img
+                  src="https://images.unsplash.com/photo-1714194821788-6fd3634f01f1?w=400"
+                  alt="Alumni Network"
+                  className="w-full h-48 object-cover rounded-xl image-hover mb-6"
+                />
+                <h3 className="text-2xl font-bold mb-3">Alumni Network</h3>
+                <p className="text-gray-400">Connect, collaborate, and give back to your alma mater</p>
+              </div>
+            </Link>
+
+            {/* Events */}
+            <Link to="/events" className="bento-item-3">
+              <div className="premium-card h-full p-8" data-testid="feature-card-2">
+                <img
+                  src="https://images.unsplash.com/photo-1731662262743-d4ed80b88672?w=400"
+                  alt="Events"
+                  className="w-full h-48 object-cover rounded-xl image-hover mb-6"
+                />
+                <h3 className="text-2xl font-bold mb-3">Events & Programs</h3>
+                <p className="text-gray-400">Stay updated with activities and cultural programs</p>
+              </div>
+            </Link>
+
+            {/* Donations */}
+            <Link to="/donations" className="bento-item-4">
+              <div className="premium-card h-full p-6 text-center" data-testid="feature-card-3">
+                <div className="text-4xl mb-4">💝</div>
+                <h3 className="text-xl font-bold mb-2">Support</h3>
+                <p className="text-gray-400 text-sm">Make an impact</p>
+              </div>
+            </Link>
+
+            {/* Forums */}
+            <Link to="/forum" className="bento-item-5">
+              <div className="premium-card h-full p-6 text-center" data-testid="feature-card-4">
+                <div className="text-4xl mb-4">💬</div>
+                <h3 className="text-xl font-bold mb-2">Forums</h3>
+                <p className="text-gray-400 text-sm">Engage & discuss</p>
+              </div>
+            </Link>
+
+            {/* Admin */}
+            <Link to="/admin" className="bento-item-6">
+              <div className="premium-card h-full p-6 text-center" data-testid="feature-card-5">
+                <div className="text-4xl mb-4">⚙️</div>
+                <h3 className="text-xl font-bold mb-2">Admin Tools</h3>
+                <p className="text-gray-400 text-sm">Manage & analyze</p>
+              </div>
+            </Link>
+          </div>
         </div>
       </section>
 
