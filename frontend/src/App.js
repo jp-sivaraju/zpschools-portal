@@ -1,54 +1,95 @@
-import { useEffect } from "react";
-import "@/App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import axios from "axios";
+import { useState, useEffect } from 'react';
+import '@/App.css';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import axios from 'axios';
+import HomePage from './pages/HomePage';
+import SchoolDirectory from './pages/SchoolDirectory';
+import SchoolDetails from './pages/SchoolDetails';
+import AlumniPortal from './pages/AlumniPortal';
+import AdminDashboard from './pages/AdminDashboard';
+import UserDashboard from './pages/UserDashboard';
+import EventsPage from './pages/EventsPage';
+import DonationsPage from './pages/DonationsPage';
+import ForumPage from './pages/ForumPage';
+import NoticesPage from './pages/NoticesPage';
+import ProfilePage from './pages/ProfilePage';
+import ChatPage from './pages/ChatPage';
+import { Toaster } from 'sonner';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
+export const API = `${BACKEND_URL}/api`;
 
-const Home = () => {
-  const helloWorldApi = async () => {
-    try {
-      const response = await axios.get(`${API}/`);
-      console.log(response.data.message);
-    } catch (e) {
-      console.error(e, `errored out requesting / api`);
-    }
-  };
-
-  useEffect(() => {
-    helloWorldApi();
-  }, []);
-
-  return (
-    <div>
-      <header className="App-header">
-        <a
-          className="App-link"
-          href="https://emergent.sh"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img src="https://avatars.githubusercontent.com/in/1201222?s=120&u=2686cf91179bbafbc7a71bfbc43004cf9ae1acea&v=4" />
-        </a>
-        <p className="mt-5">Building something incredible ~!</p>
-      </header>
-    </div>
-  );
-};
+// Auth Context
+export const AuthContext = React.createContext(null);
 
 function App() {
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Check if user is logged in
+    const token = localStorage.getItem('token');
+    if (token) {
+      axios.get(`${API}/auth/me`, {
+        headers: { Authorization: `Bearer ${token}` }
+      })
+      .then(res => {
+        setUser(res.data);
+      })
+      .catch(() => {
+        localStorage.removeItem('token');
+      })
+      .finally(() => setLoading(false));
+    } else {
+      setLoading(false);
+    }
+  }, []);
+
+  const login = (token, userData) => {
+    localStorage.setItem('token', token);
+    setUser(userData);
+  };
+
+  const logout = () => {
+    localStorage.removeItem('token');
+    setUser(null);
+  };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-orange-50">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-600 mx-auto mb-4"></div>
+          <p className="text-gray-600">Loading ZP School Portal...</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />}>
-            <Route index element={<Home />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </div>
+    <AuthContext.Provider value={{ user, login, logout }}>
+      <div className="App">
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/schools" element={<SchoolDirectory />} />
+            <Route path="/schools/:id" element={<SchoolDetails />} />
+            <Route path="/alumni" element={<AlumniPortal />} />
+            <Route path="/admin" element={user?.role === 'admin' || user?.role === 'meo' ? <AdminDashboard /> : <Navigate to="/" />} />
+            <Route path="/dashboard" element={user ? <UserDashboard /> : <Navigate to="/" />} />
+            <Route path="/events" element={<EventsPage />} />
+            <Route path="/donations" element={<DonationsPage />} />
+            <Route path="/forum" element={<ForumPage />} />
+            <Route path="/notices" element={<NoticesPage />} />
+            <Route path="/profile" element={user ? <ProfilePage /> : <Navigate to="/" />} />
+            <Route path="/chat" element={user ? <ChatPage /> : <Navigate to="/" />} />
+          </Routes>
+        </BrowserRouter>
+        <Toaster position="top-right" richColors />
+      </div>
+    </AuthContext.Provider>
   );
 }
 
+import React from 'react';
 export default App;
