@@ -74,38 +74,65 @@ const HomePage = () => {
         </nav>
       </header>
 
-      {/* Hero Section */}
-      <section className="container mx-auto px-4 py-20">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="fade-in">
-            <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-              Empowering <span className="text-blue-600">300+ Schools</span> in Konaseema
-            </h1>
-            <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-              Connecting students, alumni, and educators across Zilla Parishad schools in Andhra Pradesh. Together, we build a brighter future.
-            </p>
-            <div className="flex space-x-4">
-              <Link to="/schools" data-testid="hero-explore-btn">
-                <Button className="btn-primary bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 text-lg rounded-full">
-                  Explore Schools
-                </Button>
-              </Link>
-              <Link to="/alumni" data-testid="hero-join-btn">
-                <Button variant="outline" className="border-2 border-blue-600 text-blue-600 hover:bg-blue-50 px-8 py-6 text-lg rounded-full">
-                  Join Alumni Network
-                </Button>
-              </Link>
+      {/* Premium Hero Section */}
+      <section className="container mx-auto px-6 pt-32 pb-24">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="space-y-8">
+              <div className="fade-in-up">
+                <div className="badge-premium mb-6">
+                  🎓 Empowering 300+ Schools
+                </div>
+                <h1 className="text-6xl lg:text-7xl font-bold leading-[1.1] mb-6">
+                  Transform Education in{' '}
+                  <span className="text-gradient">Konaseema</span>
+                </h1>
+                <p className="text-xl text-gray-400 leading-relaxed max-w-xl">
+                  A world-class digital platform connecting students, alumni, and educators across Zilla Parishad schools in Andhra Pradesh.
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-4 fade-in-up delay-200">
+                <Link to="/schools" data-testid="hero-explore-btn">
+                  <Button className="btn-premium text-white px-8 py-4 text-base rounded-2xl">
+                    Explore Schools
+                  </Button>
+                </Link>
+                <Link to="/alumni" data-testid="hero-join-btn">
+                  <Button variant="outline" className="border border-white/20 bg-white/5 text-white hover:bg-white/10 px-8 py-4 text-base rounded-2xl backdrop-blur-sm">
+                    Join Alumni Network
+                  </Button>
+                </Link>
+              </div>
+              
+              {/* Mini Stats */}
+              <div className="flex gap-8 pt-6 fade-in-up delay-300">
+                <div>
+                  <p className="text-3xl font-bold text-white stat-number">300+</p>
+                  <p className="text-sm text-gray-400">Schools</p>
+                </div>
+                <div>
+                  <p className="text-3xl font-bold text-white stat-number">100K+</p>
+                  <p className="text-sm text-gray-400">Students</p>
+                </div>
+                <div>
+                  <p className="text-3xl font-bold text-white stat-number">22</p>
+                  <p className="text-sm text-gray-400">Mandals</p>
+                </div>
+              </div>
             </div>
-          </div>
-          <div className="relative">
-            <img
-              src="https://images.unsplash.com/photo-1639910232134-8cc7505c4e64?w=800"
-              alt="Indian government school building"
-              className="rounded-3xl shadow-2xl card-hover w-full h-[400px] object-cover"
-            />
-            <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-xl">
-              <p className="text-4xl font-bold text-blue-600">300+</p>
-              <p className="text-gray-600 font-medium">Schools Connected</p>
+            
+            <div className="relative fade-in-up delay-400">
+              <div className="relative overflow-hidden rounded-3xl premium-card p-1">
+                <img
+                  src="https://images.unsplash.com/photo-1639910232134-8cc7505c4e64?w=800"
+                  alt="Indian government school building"
+                  className="w-full h-[500px] object-cover rounded-3xl image-hover"
+                />
+              </div>
+              <div className="absolute -bottom-6 -left-6 glass-card p-6 rounded-2xl shadow-2xl float">
+                <p className="text-5xl font-bold text-gradient">300+</p>
+                <p className="text-gray-300 font-medium mt-2">Schools Connected</p>
+              </div>
             </div>
           </div>
         </div>
