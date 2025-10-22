@@ -30,155 +30,202 @@ const AlumniPortal = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-orange-50">
+    <div className="min-h-screen" style={{backgroundColor: 'var(--charcoal)'}}>
+      <div className="gradient-mesh"></div>
       <NavBar />
-      <div className="container mx-auto px-4 py-8">
-        <div className="max-w-6xl mx-auto">
+      
+      <div className="container mx-auto px-6 py-16 relative">
+        <div className="max-w-7xl mx-auto">
           {/* Hero */}
-          <div className="bg-gradient-to-r from-blue-600 to-orange-500 rounded-3xl p-12 text-white mb-8">
-            <h1 className="text-5xl font-bold mb-4">Alumni Portal</h1>
-            <p className="text-blue-100 text-lg mb-6">Connect, collaborate, and give back to your alma mater</p>
-            <img
-              src="https://images.unsplash.com/photo-1714194821788-6fd3634f01f1?w=800"
-              alt="Alumni graduation"
-              className="w-full h-64 object-cover rounded-2xl"
-            />
+          <div className="glass-card rounded-3xl p-16 mb-16 relative overflow-hidden">
+            <div className="absolute inset-0 opacity-10" style={{background: 'linear-gradient(135deg, var(--crimson), var(--maroon))'}}></div>
+            <div className="relative text-center">
+              <div className="inline-block px-4 py-2 rounded-full mb-6" style={{
+                background: 'rgba(197, 165, 114, 0.15)',
+                border: '1px solid var(--gold)'
+              }}>
+                <span style={{color: 'var(--gold)'}} className="text-sm font-semibold">
+                  🎓 Join Our Legacy
+                </span>
+              </div>
+              <h1 className="text-6xl font-bold mb-6" style={{fontFamily: 'Libre Baskerville', color: 'var(--ivory)'}}>
+                Alumni Network
+              </h1>
+              <p className="text-2xl max-w-3xl mx-auto" style={{color: 'var(--ivory)', opacity: 0.8}}>
+                Connect, collaborate, and give back to your alma mater
+              </p>
+            </div>
           </div>
 
-          <Tabs defaultValue="network" className="space-y-6">
-            <TabsList className="grid grid-cols-2 md:grid-cols-5 w-full" data-testid="alumni-tabs">
-              <TabsTrigger value="network">Alumni Network</TabsTrigger>
-              <TabsTrigger value="forum">Discussion Forum</TabsTrigger>
-              <TabsTrigger value="mentoring">Mentoring</TabsTrigger>
-              <TabsTrigger value="offers">Job Offers</TabsTrigger>
-              <TabsTrigger value="bulletin">Bulletin Board</TabsTrigger>
+          <Tabs defaultValue="network" className="space-y-8">
+            <TabsList className="glass-card p-2 rounded-2xl border-0" style={{background: 'rgba(255, 255, 255, 0.05)'}} data-testid="alumni-tabs">
+              <TabsTrigger value="network" className="data-[state=active]:bg-crimson data-[state=active]:text-white rounded-xl">Network</TabsTrigger>
+              <TabsTrigger value="forum" className="data-[state=active]:bg-crimson data-[state=active]:text-white rounded-xl">Forum</TabsTrigger>
+              <TabsTrigger value="mentoring" className="data-[state=active]:bg-crimson data-[state=active]:text-white rounded-xl">Mentoring</TabsTrigger>
+              <TabsTrigger value="offers" className="data-[state=active]:bg-crimson data-[state=active]:text-white rounded-xl">Opportunities</TabsTrigger>
+              <TabsTrigger value="bulletin" className="data-[state=active]:bg-crimson data-[state=active]:text-white rounded-xl">Bulletin</TabsTrigger>
             </TabsList>
 
             <TabsContent value="network">
-              <Card>
-                <CardHeader>
-                  <CardTitle>Alumni Network ({alumni.length})</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  {alumni.length > 0 ? (
-                    <div className="grid md:grid-cols-3 gap-4">
-                      {alumni.map((alum) => (
-                        <div key={alum.id} className="p-6 bg-gradient-to-br from-blue-50 to-white rounded-xl card-hover" data-testid={`alumni-card-${alum.id}`}>
-                          <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-orange-500 rounded-full mx-auto mb-4 flex items-center justify-center text-white text-2xl font-bold">
+              <div className="glass-card p-12 rounded-3xl">
+                <h2 className="text-3xl font-bold mb-8" style={{fontFamily: 'Libre Baskerville', color: 'var(--ivory)'}}>
+                  Alumni Directory ({alumni.length})
+                </h2>
+                {alumni.length > 0 ? (
+                  <div className="grid md:grid-cols-3 gap-6">
+                    {alumni.map((alum) => (
+                      <div key={alum.id} className="glass-card p-8 rounded-2xl hover:scale-105 transition-all text-center" data-testid={`alumni-card-${alum.id}`}>
+                        <div className="w-20 h-20 rounded-full mx-auto mb-4 flex items-center justify-center" style={{
+                          background: 'linear-gradient(135deg, var(--crimson), var(--maroon))',
+                          border: '3px solid var(--gold)'
+                        }}>
+                          <span className="text-white text-3xl font-bold" style={{fontFamily: 'Libre Baskerville'}}>
                             {alum.batch_year?.toString().slice(-2)}
-                          </div>
-                          <p className="font-bold text-center text-gray-900">Batch {alum.batch_year}</p>
-                          <p className="text-sm text-gray-600 text-center">{alum.current_profession || 'Professional'}</p>
-                          {alum.willing_to_mentor && (
-                            <div className="mt-3 text-center">
-                              <span className="inline-block bg-green-100 text-green-800 text-xs px-3 py-1 rounded-full">Available for Mentoring</span>
-                            </div>
-                          )}
+                          </span>
                         </div>
-                      ))}
-                    </div>
-                  ) : (
-                    <div className="text-center py-12">
-                      <p className="text-gray-600 mb-4">No alumni profiles yet.</p>
-                      {user && (
-                        <Button className="bg-blue-600 hover:bg-blue-700" data-testid="register-alumni-btn">
-                          Register as Alumni
-                        </Button>
-                      )}
-                    </div>
-                  )}
-                </CardContent>
-              </Card>
+                        <p className="font-bold text-xl mb-2" style={{color: 'var(--ivory)'}}>Batch {alum.batch_year}</p>
+                        <p className="mb-3" style={{color: 'var(--gold)'}}>{alum.current_profession || 'Professional'}</p>
+                        {alum.willing_to_mentor && (
+                          <span className="inline-block px-4 py-2 rounded-full text-xs font-semibold" style={{
+                            background: 'rgba(16, 185, 129, 0.2)',
+                            color: '#10b981'
+                          }}>
+                            Available for Mentoring
+                          </span>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="text-center py-12">
+                    <div className="text-6xl mb-6">🎓</div>
+                    <p className="text-xl mb-6" style={{color: 'var(--ivory)', opacity: 0.7}}>No alumni profiles yet.</p>
+                    {user && (
+                      <Button className="text-white px-8 py-4 rounded-xl font-semibold" style={{
+                        background: 'linear-gradient(135deg, var(--crimson), var(--maroon))'
+                      }} data-testid="register-alumni-btn">
+                        Register as Alumni
+                      </Button>
+                    )}
+                  </div>
+                )}
+              </div>
             </TabsContent>
 
             <TabsContent value="forum">
-              <Card>
-                <CardHeader>
-                  <CardTitle>Discussion Forum</CardTitle>
-                </CardHeader>
-                <CardContent>
+              <div className="glass-card p-12 rounded-3xl">
+                <div className="flex justify-between items-center mb-8">
+                  <h2 className="text-3xl font-bold" style={{fontFamily: 'Libre Baskerville', color: 'var(--ivory)'}}>
+                    Discussion Forum
+                  </h2>
                   {user && (
-                    <Button className="mb-6 bg-blue-600 hover:bg-blue-700" data-testid="new-post-btn">
+                    <Button className="text-white px-6 py-3 rounded-xl font-semibold" style={{
+                      background: 'linear-gradient(135deg, var(--crimson), var(--maroon))'
+                    }} data-testid="new-post-btn">
                       Create New Post
                     </Button>
                   )}
-                  {forumPosts.length > 0 ? (
-                    <div className="space-y-4">
-                      {forumPosts.map((post) => (
-                        <div key={post.id} className="p-6 bg-white rounded-xl border border-gray-200 card-hover" data-testid={`forum-post-${post.id}`}>
-                          <h3 className="font-bold text-gray-900 mb-2">{post.title}</h3>
-                          <p className="text-gray-600 mb-3">{post.content}</p>
-                          <div className="flex justify-between items-center text-sm text-gray-500">
-                            <span>Category: {post.category}</span>
-                            <span>{post.replies_count} replies</span>
-                          </div>
+                </div>
+                {forumPosts.length > 0 ? (
+                  <div className="space-y-6">
+                    {forumPosts.map((post) => (
+                      <div key={post.id} className="p-8 rounded-2xl hover:scale-[1.02] transition-all cursor-pointer" style={{
+                        background: 'rgba(197, 165, 114, 0.1)',
+                        border: '1px solid rgba(197, 165, 114, 0.2)'
+                      }} data-testid={`forum-post-${post.id}`}>
+                        <h3 className="text-2xl font-bold mb-3" style={{fontFamily: 'Libre Baskerville', color: 'var(--ivory)'}}>
+                          {post.title}
+                        </h3>
+                        <p className="mb-4 text-lg" style={{color: 'var(--ivory)', opacity: 0.8}}>{post.content}</p>
+                        <div className="flex gap-4">
+                          <span className="px-4 py-2 rounded-full text-sm" style={{background: 'var(--crimson)', color: 'white'}}>
+                            {post.category}
+                          </span>
+                          <span style={{color: 'var(--gold)'}}>{post.replies_count} replies</span>
                         </div>
-                      ))}
-                    </div>
-                  ) : (
-                    <p className="text-gray-600 text-center py-8">No forum posts yet. Start a discussion!</p>
-                  )}
-                </CardContent>
-              </Card>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="text-center py-12">
+                    <p style={{color: 'var(--ivory)', opacity: 0.7}}>No forum posts yet. Start a discussion!</p>
+                  </div>
+                )}
+              </div>
             </TabsContent>
 
             <TabsContent value="mentoring">
-              <Card>
-                <CardHeader>
-                  <CardTitle>Mentoring Program</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="text-center py-12">
-                    <img
-                      src="https://images.unsplash.com/photo-1758685733940-b1c11d04f553?w=600"
-                      alt="Mentoring"
-                      className="w-full max-w-md h-64 object-cover rounded-xl mx-auto mb-6"
-                    />
-                    <h3 className="text-xl font-bold text-gray-900 mb-3">Mentoring Program</h3>
-                    <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-                      Connect with experienced alumni who can guide students and recent graduates in their career paths.
-                      Mentors share knowledge, provide advice, and help shape the next generation.
-                    </p>
-                    <div className="flex justify-center space-x-4">
-                      <Button className="bg-blue-600 hover:bg-blue-700" data-testid="become-mentor-btn">Become a Mentor</Button>
-                      <Button variant="outline" className="border-blue-600 text-blue-600" data-testid="find-mentor-btn">Find a Mentor</Button>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
+              <div className="glass-card p-12 rounded-3xl text-center">
+                <div className="achievement-badge mx-auto mb-8 text-5xl">🎯</div>
+                <h2 className="text-4xl font-bold mb-6" style={{fontFamily: 'Libre Baskerville', color: 'var(--ivory)'}}>
+                  Mentoring Program
+                </h2>
+                <p className="text-xl mb-12 max-w-3xl mx-auto" style={{color: 'var(--ivory)', opacity: 0.8}}>
+                  Connect with experienced alumni who can guide students and recent graduates in their career paths.
+                  Mentors share knowledge, provide advice, and help shape the next generation.
+                </p>
+                <div className="flex justify-center gap-6">
+                  <Button className="text-white px-8 py-4 text-lg rounded-xl font-semibold" style={{
+                    background: 'linear-gradient(135deg, var(--crimson), var(--maroon))'
+                  }} data-testid="become-mentor-btn">
+                    Become a Mentor
+                  </Button>
+                  <Button className="px-8 py-4 text-lg rounded-xl font-semibold" style={{
+                    border: '2px solid var(--gold)',
+                    color: 'var(--gold)',
+                    background: 'rgba(197, 165, 114, 0.1)'
+                  }} data-testid="find-mentor-btn">
+                    Find a Mentor
+                  </Button>
+                </div>
+              </div>
             </TabsContent>
 
             <TabsContent value="offers">
-              <Card>
-                <CardHeader>
-                  <CardTitle>Job Offers & Guest Lectures</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-4">
-                    <div className="p-6 bg-gradient-to-r from-green-50 to-blue-50 rounded-xl">
-                      <h3 className="font-bold text-gray-900 mb-2">Guest Lecture Opportunity</h3>
-                      <p className="text-gray-600 mb-3">Alumni are invited to share their experiences and insights with current students.</p>
-                      <Button className="bg-blue-600 hover:bg-blue-700" data-testid="schedule-lecture-btn">Schedule a Lecture</Button>
-                    </div>
-                    <div className="p-6 bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl">
-                      <h3 className="font-bold text-gray-900 mb-2">Job Postings</h3>
-                      <p className="text-gray-600 mb-3">Help fellow alumni and students find career opportunities.</p>
-                      <Button className="bg-blue-600 hover:bg-blue-700" data-testid="post-job-btn">Post a Job</Button>
-                    </div>
+              <div className="glass-card p-12 rounded-3xl">
+                <h2 className="text-3xl font-bold mb-8" style={{fontFamily: 'Libre Baskerville', color: 'var(--ivory)'}}>
+                  Career Opportunities
+                </h2>
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div className="p-8 rounded-2xl" style={{background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(59, 130, 246, 0.1))'}}>
+                    <div className="text-4xl mb-4">💼</div>
+                    <h3 className="text-2xl font-bold mb-3" style={{fontFamily: 'Libre Baskerville', color: 'var(--ivory)'}}>
+                      Job Postings
+                    </h3>
+                    <p className="mb-6" style={{color: 'var(--ivory)', opacity: 0.8}}>
+                      Help fellow alumni and students find career opportunities.
+                    </p>
+                    <Button className="text-white px-6 py-3 rounded-xl font-semibold" style={{
+                      background: 'linear-gradient(135deg, var(--crimson), var(--maroon))'
+                    }} data-testid="post-job-btn">
+                      Post a Job
+                    </Button>
                   </div>
-                </CardContent>
-              </Card>
+                  <div className="p-8 rounded-2xl" style={{background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(236, 72, 153, 0.1))'}}>
+                    <div className="text-4xl mb-4">🎤</div>
+                    <h3 className="text-2xl font-bold mb-3" style={{fontFamily: 'Libre Baskerville', color: 'var(--ivory)'}}>
+                      Guest Lectures
+                    </h3>
+                    <p className="mb-6" style={{color: 'var(--ivory)', opacity: 0.8}}>
+                      Share your experiences and insights with current students.
+                    </p>
+                    <Button className="text-white px-6 py-3 rounded-xl font-semibold" style={{
+                      background: 'linear-gradient(135deg, var(--crimson), var(--maroon))'
+                    }} data-testid="schedule-lecture-btn">
+                      Schedule a Lecture
+                    </Button>
+                  </div>
+                </div>
+              </div>
             </TabsContent>
 
             <TabsContent value="bulletin">
-              <Card>
-                <CardHeader>
-                  <CardTitle>Bulletin Board</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600 text-center py-8">Announcements and updates will appear here.</p>
-                </CardContent>
-              </Card>
+              <div className="glass-card p-12 rounded-3xl text-center">
+                <h2 className="text-3xl font-bold mb-4" style={{fontFamily: 'Libre Baskerville', color: 'var(--ivory)'}}>
+                  Bulletin Board
+                </h2>
+                <p style={{color: 'var(--ivory)', opacity: 0.7}}>Announcements and updates will appear here.</p>
+              </div>
             </TabsContent>
           </Tabs>
         </div>
