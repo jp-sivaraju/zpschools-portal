@@ -414,6 +414,122 @@ const HomePage = () => {
         </div>
       </section>
 
+      {/* Gamification & Leaderboard */}
+      <section className="py-32 relative">
+        <div className="container mx-auto px-6">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-5xl font-bold mb-6" style={{fontFamily: 'Libre Baskerville', color: 'var(--ivory)'}}>
+                Community <span style={{color: 'var(--gold)'}}>Champions</span>
+              </h2>
+              <p className="text-xl" style={{color: 'var(--ivory)', opacity: 0.7}}>
+                Celebrating our most active contributors
+              </p>
+            </div>
+
+            <div className="grid lg:grid-cols-3 gap-12">
+              {/* Top Donors */}
+              <div className="glass-card p-8 rounded-3xl">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="achievement-badge w-12 h-12">💝</div>
+                  <h3 className="text-2xl font-bold" style={{color: 'var(--ivory)'}}>Top Donors</h3>
+                </div>
+                <div className="space-y-4">
+                  {[
+                    { name: 'Srinivas Reddy', amount: '₹50L', rank: 1 },
+                    { name: 'Lakshmi Devi', amount: '₹35L', rank: 2 },
+                    { name: 'Venkat Rao', amount: '₹25L', rank: 3 }
+                  ].map((donor, idx) => (
+                    <div key={idx} className={`leaderboard-item rank-${donor.rank}`}>
+                      <span className="text-2xl font-bold mr-4" style={{color: 'var(--gold)'}}>
+                        #{donor.rank}
+                      </span>
+                      <div className="flex-1">
+                        <p className="font-semibold" style={{color: 'var(--ivory)'}}>{donor.name}</p>
+                        <p className="text-sm" style={{color: 'var(--gold)'}}>{donor.amount} donated</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Top Mentors */}
+              <div className="glass-card p-8 rounded-3xl">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="achievement-badge w-12 h-12">🎓</div>
+                  <h3 className="text-2xl font-bold" style={{color: 'var(--ivory)'}}>Active Mentors</h3>
+                </div>
+                <div className="space-y-4">
+                  {[
+                    { name: 'Dr. Arjun Kumar', students: '45', rank: 1 },
+                    { name: 'Prof. Meera Shah', students: '38', rank: 2 },
+                    { name: 'Suresh Babu', students: '32', rank: 3 }
+                  ].map((mentor, idx) => (
+                    <div key={idx} className={`leaderboard-item rank-${mentor.rank}`}>
+                      <span className="text-2xl font-bold mr-4" style={{color: 'var(--gold)'}}>
+                        #{mentor.rank}
+                      </span>
+                      <div className="flex-1">
+                        <p className="font-semibold" style={{color: 'var(--ivory)'}}>{mentor.name}</p>
+                        <p className="text-sm" style={{color: 'var(--gold)'}}>{mentor.students} students mentored</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Most Engaged */}
+              <div className="glass-card p-8 rounded-3xl">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="achievement-badge w-12 h-12">⭐</div>
+                  <h3 className="text-2xl font-bold" style={{color: 'var(--ivory)'}}>Community Stars</h3>
+                </div>
+                <div className="space-y-4">
+                  {[
+                    { name: 'Rajesh Patel', activity: '250', rank: 1 },
+                    { name: 'Kavita Singh', activity: '210', rank: 2 },
+                    { name: 'Anil Kumar', activity: '180', rank: 3 }
+                  ].map((member, idx) => (
+                    <div key={idx} className={`leaderboard-item rank-${member.rank}`}>
+                      <span className="text-2xl font-bold mr-4" style={{color: 'var(--gold)'}}>
+                        #{member.rank}
+                      </span>
+                      <div className="flex-1">
+                        <p className="font-semibold" style={{color: 'var(--ivory)'}}>{member.name}</p>
+                        <p className="text-sm" style={{color: 'var(--gold)'}}>{member.activity} contributions</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Achievement Badges */}
+            <div className="mt-16 text-center">
+              <h3 className="text-3xl font-bold mb-8" style={{fontFamily: 'Libre Baskerville', color: 'var(--ivory)'}}>
+                Earn Recognition
+              </h3>
+              <div className="flex justify-center gap-8 flex-wrap">
+                {[
+                  { icon: '🏆', name: 'Pioneer', desc: 'First 100 members' },
+                  { icon: '💎', name: 'Platinum Donor', desc: '₹10L+ donated' },
+                  { icon: '🎯', name: 'Super Mentor', desc: '50+ mentees' },
+                  { icon: '🌟', name: 'Community Leader', desc: '500+ engagements' }
+                ].map((badge, idx) => (
+                  <div key={idx} className="text-center group cursor-pointer">
+                    <div className="achievement-badge mx-auto mb-3 text-3xl">
+                      {badge.icon}
+                    </div>
+                    <p className="font-bold mb-1" style={{color: 'var(--ivory)'}}>{badge.name}</p>
+                    <p className="text-sm" style={{color: 'var(--ivory)', opacity: 0.6}}>{badge.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Premium CTA Section */}
       <section className="py-32 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 via-violet-600/20 to-emerald-600/20"></div>
