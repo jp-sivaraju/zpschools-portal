@@ -250,6 +250,80 @@ const HomePage = () => {
         </div>
       </section>
 
+      {/* Mission & Legacy Section */}
+      <section className="py-32 relative" style={{background: 'linear-gradient(180deg, transparent 0%, rgba(165, 28, 48, 0.05) 50%, transparent 100%)'}}>
+        <div className="container mx-auto px-6">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-20 items-center">
+              <div>
+                <div className="inline-block px-4 py-2 rounded-full mb-6" style={{background: 'rgba(197, 165, 114, 0.15)', border: '1px solid var(--gold)'}}>
+                  <span style={{color: 'var(--gold)'}} className="text-sm font-semibold">Our Legacy</span>
+                </div>
+                <h2 className="text-5xl font-bold mb-8" style={{fontFamily: 'Libre Baskerville', color: 'var(--ivory)'}}>
+                  75 Years of Educational Excellence
+                </h2>
+                <p className="text-xl leading-relaxed mb-12" style={{color: 'var(--ivory)', opacity: 0.8}}>
+                  Since 1947, Zilla Parishad schools in Konaseema have been the cornerstone of quality education in rural Andhra Pradesh, nurturing generations of leaders, innovators, and change-makers.
+                </p>
+                
+                {/* Timeline */}
+                <div className="space-y-0">
+                  {[
+                    { year: '1947', event: 'First ZP School established in Amalapuram' },
+                    { year: '1985', event: 'Expansion to 100+ schools across district' },
+                    { year: '2010', event: 'Digital transformation initiative launched' },
+                    { year: '2025', event: '300+ schools, 100K+ alumni network' }
+                  ].map((item, idx) => (
+                    <div key={idx} className="timeline-item">
+                      <div className="flex items-baseline gap-6">
+                        <span className="text-2xl font-bold shrink-0" style={{color: 'var(--gold)', fontFamily: 'Libre Baskerville'}}>
+                          {item.year}
+                        </span>
+                        <p className="text-lg" style={{color: 'var(--ivory)', opacity: 0.9}}>
+                          {item.event}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              
+              <div className="relative">
+                <div className="glass-card p-8 rounded-3xl">
+                  <h3 className="text-3xl font-bold mb-8" style={{fontFamily: 'Libre Baskerville', color: 'var(--ivory)'}}>
+                    Global Alumni Reach
+                  </h3>
+                  <img
+                    src="https://images.unsplash.com/photo-1639910232134-8cc7505c4e64?w=800"
+                    alt="Global map"
+                    className="w-full h-64 object-cover rounded-2xl mb-6"
+                  />
+                  <div className="grid grid-cols-3 gap-4">
+                    {[
+                      { country: 'USA', count: '2,500+' },
+                      { country: 'UK', count: '800+' },
+                      { country: 'UAE', count: '1,200+' },
+                      { country: 'Singapore', count: '400+' },
+                      { country: 'Australia', count: '600+' },
+                      { country: 'India', count: '95,000+' }
+                    ].map((location, idx) => (
+                      <div key={idx} className="text-center p-4 rounded-xl" style={{background: 'rgba(197, 165, 114, 0.1)'}}>
+                        <p className="text-2xl font-bold mb-1" style={{color: 'var(--gold)'}}>
+                          {location.count}
+                        </p>
+                        <p className="text-sm" style={{color: 'var(--ivory)', opacity: 0.7}}>
+                          {location.country}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Bento Grid Features Section */}
       <section className="container mx-auto px-6 py-32">
         <div className="max-w-7xl mx-auto">
