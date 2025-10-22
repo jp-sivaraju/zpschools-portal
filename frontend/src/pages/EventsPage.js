@@ -27,109 +27,153 @@ const EventsPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-orange-50">
+    <div className="min-h-screen" style={{backgroundColor: 'var(--charcoal)'}}>
+      <div className="gradient-mesh"></div>
       <NavBar />
-      <div className="container mx-auto px-4 py-8">
-        <div className="max-w-6xl mx-auto">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Events Calendar</h1>
-          <p className="text-lg text-gray-600 mb-8">Stay updated with upcoming school events, cultural activities, and programs</p>
+      
+      <div className="container mx-auto px-6 py-16 relative">
+        <div className="max-w-7xl mx-auto">
+          {/* Header */}
+          <div className="text-center mb-16">
+            <div className="inline-block px-4 py-2 rounded-full mb-6" style={{
+              background: 'rgba(197, 165, 114, 0.15)',
+              border: '1px solid var(--gold)'
+            }}>
+              <span style={{color: 'var(--gold)'}} className="text-sm font-semibold">
+                📅 Community Events
+              </span>
+            </div>
+            <h1 className="text-5xl md:text-6xl font-bold mb-6" style={{
+              fontFamily: 'Libre Baskerville',
+              color: 'var(--ivory)'
+            }}>
+              Events & Programs
+            </h1>
+            <p className="text-xl" style={{color: 'var(--ivory)', opacity: 0.7}}>
+              Stay connected with alumni gatherings, school celebrations, and educational programs
+            </p>
+          </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* Calendar */}
-            <Card className="md:col-span-1">
-              <CardHeader>
-                <CardTitle>Calendar</CardTitle>
-              </CardHeader>
-              <CardContent>
+          <div className="grid lg:grid-cols-3 gap-8">
+            {/* Calendar Card */}
+            <div className="lg:col-span-1">
+              <div className="glass-card p-8 rounded-3xl sticky top-24">
+                <h2 className="text-2xl font-bold mb-6" style={{fontFamily: 'Libre Baskerville', color: 'var(--ivory)'}}>Calendar</h2>
                 <Calendar
                   mode="single"
                   selected={selectedDate}
                   onSelect={setSelectedDate}
-                  className="rounded-md border"
+                  className="rounded-2xl"
+                  style={{color: 'var(--ivory)'}}
                 />
-              </CardContent>
-            </Card>
+                <div className="mt-8 p-6 rounded-2xl text-center" style={{background: 'rgba(197, 165, 114, 0.1)'}}>
+                  <div className="text-4xl mb-3">🎓</div>
+                  <p className="font-semibold mb-2" style={{color: 'var(--ivory)'}}>Upcoming</p>
+                  <p className="text-3xl font-bold" style={{color: 'var(--gold)'}}>{events.length}</p>
+                  <p className="text-sm" style={{color: 'var(--ivory)', opacity: 0.7}}>Events This Month</p>
+                </div>
+              </div>
+            </div>
 
             {/* Events List */}
-            <div className="md:col-span-2 space-y-4">
-              <Card>
-                <CardHeader>
-                  <div className="flex justify-between items-center">
-                    <CardTitle>Upcoming Events</CardTitle>
-                    <Button className="bg-blue-600 hover:bg-blue-700" data-testid="create-event-btn">Create Event</Button>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  {loading ? (
-                    <div className="space-y-4">
-                      {[...Array(3)].map((_, i) => (
-                        <div key={i} className="skeleton h-32 rounded-xl"></div>
-                      ))}
-                    </div>
-                  ) : events.length > 0 ? (
-                    <div className="space-y-4">
-                      {events.map((event) => (
-                        <div key={event.id} className="p-6 bg-gradient-to-r from-blue-50 to-white rounded-xl border border-gray-200 card-hover" data-testid={`event-${event.id}`}>
-                          <h3 className="text-xl font-bold text-gray-900 mb-2">{event.title}</h3>
-                          <p className="text-gray-600 mb-3">{event.description}</p>
-                          <div className="flex justify-between items-center text-sm">
-                            <span className="text-gray-500">
-                              {new Date(event.event_date).toLocaleDateString('en-IN', {
-                                year: 'numeric',
-                                month: 'long',
-                                day: 'numeric'
-                              })}
-                            </span>
-                            <div className="flex space-x-2">
-                              <Button variant="outline" size="sm" data-testid={`rsvp-btn-${event.id}`}>RSVP</Button>
-                              <span className="text-green-600 font-medium">{event.rsvp_count} attending</span>
-                            </div>
-                          </div>
-                          {event.location && (
-                            <p className="text-sm text-gray-500 mt-2">Location: {event.location}</p>
-                          )}
-                        </div>
-                      ))}
-                    </div>
-                  ) : (
-                    <div className="text-center py-12">
-                      <img
-                        src="https://images.unsplash.com/photo-1731662262743-d4ed80b88672?w=600"
-                        alt="Cultural activities"
-                        className="w-full max-w-md h-48 object-cover rounded-xl mx-auto mb-6"
-                      />
-                      <p className="text-gray-600 mb-4">No upcoming events scheduled.</p>
-                      <Button className="bg-blue-600 hover:bg-blue-700" data-testid="create-first-event-btn">Create First Event</Button>
-                    </div>
-                  )}
-                </CardContent>
-              </Card>
+            <div className="lg:col-span-2 space-y-6">
+              <div className="flex justify-between items-center mb-8">
+                <h2 className="text-3xl font-bold" style={{fontFamily: 'Libre Baskerville', color: 'var(--ivory)'}}>Upcoming Events</h2>
+                <Button className="text-white px-6 py-3 rounded-xl font-semibold" style={{
+                  background: 'linear-gradient(135deg, var(--crimson), var(--maroon))'
+                }} data-testid="create-event-btn">
+                  Create Event
+                </Button>
+              </div>
 
-              {/* Event Gallery */}
-              <Card>
-                <CardHeader>
-                  <CardTitle>Event Gallery</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                    {[
-                      'https://images.unsplash.com/photo-1731662262743-d4ed80b88672?w=400',
-                      'https://images.unsplash.com/photo-1600712300016-b47905e7aa39?w=400',
-                      'https://images.unsplash.com/flagged/photo-1574097656146-0b43b7660cb6?w=400',
-                      'https://images.unsplash.com/photo-1572847748080-bac263fae977?w=400',
-                      'https://images.unsplash.com/photo-1714194821788-6fd3634f01f1?w=400',
-                      'https://images.unsplash.com/photo-1629273229664-11fabc0becc0?w=400'
-                    ].map((img, idx) => (
-                      <img
-                        key={idx}
-                        src={img}
-                        alt={`Event ${idx + 1}`}
-                        className="w-full h-32 object-cover rounded-lg card-hover"
-                      />
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
+              {loading ? (
+                <div className="space-y-6">
+                  {[...Array(3)].map((_, i) => (
+                    <div key={i} className="skeleton-premium h-48 rounded-2xl"></div>
+                  ))}
+                </div>
+              ) : events.length > 0 ? (
+                <div className="space-y-6">
+                  {events.map((event) => (
+                    <div key={event.id} className="glass-card p-8 rounded-3xl hover:scale-[1.02] transition-all" data-testid={`event-${event.id}`}>
+                      <div className="flex items-start gap-6">
+                        {/* Date Badge */}
+                        <div className="shrink-0 text-center p-4 rounded-2xl" style={{
+                          background: 'linear-gradient(135deg, var(--crimson), var(--maroon))',
+                          width: '100px'
+                        }}>
+                          <p className="text-3xl font-bold text-white mb-1">
+                            {new Date(event.event_date).getDate()}
+                          </p>
+                          <p className="text-sm text-white opacity-80">
+                            {new Date(event.event_date).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
+                          </p>
+                        </div>
+
+                        {/* Event Details */}
+                        <div className="flex-1">
+                          <h3 className="text-2xl font-bold mb-3" style={{fontFamily: 'Libre Baskerville', color: 'var(--ivory)'}}>{
+                            event.title}
+                          </h3>
+                          <p className="text-lg mb-4" style={{color: 'var(--ivory)', opacity: 0.8}}>{event.description}</p>
+                          
+                          {event.location && (
+                            <p className="mb-4 flex items-center gap-2" style={{color: 'var(--gold)'}}>  
+                              <span>📍</span> {event.location}
+                            </p>
+                          )}
+
+                          <div className="flex items-center gap-4">
+                            <Button className="px-6 py-2 rounded-xl font-semibold" style={{
+                              border: '2px solid var(--gold)',
+                              color: 'var(--gold)',
+                              background: 'rgba(197, 165, 114, 0.1)'
+                            }} data-testid={`rsvp-btn-${event.id}`}>
+                              RSVP
+                            </Button>
+                            <span className="flex items-center gap-2" style={{color: 'var(--ivory)', opacity: 0.7}}>
+                              <span className="text-xl">👥</span>
+                              <span className="font-semibold" style={{color: 'var(--gold)'}}>{event.rsvp_count}</span> attending
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="glass-card p-16 rounded-3xl text-center">
+                  <div className="text-6xl mb-6">📅</div>
+                  <h3 className="text-3xl font-bold mb-4" style={{fontFamily: 'Libre Baskerville', color: 'var(--ivory)'}}>No Upcoming Events</h3>
+                  <p className="text-lg mb-8" style={{color: 'var(--ivory)', opacity: 0.7}}>Check back soon for exciting alumni gatherings and school programs!</p>
+                  <Button className="text-white px-8 py-4 rounded-xl font-semibold" style={{
+                    background: 'linear-gradient(135deg, var(--crimson), var(--maroon))'
+                  }} data-testid="create-first-event-btn">
+                    Create First Event
+                  </Button>
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Event Categories */}
+          <div className="mt-20">
+            <h2 className="text-4xl font-bold text-center mb-12" style={{fontFamily: 'Libre Baskerville', color: 'var(--ivory)'}}>Event Categories</h2>
+            <div className="grid md:grid-cols-4 gap-6">
+              {[
+                { icon: '🎓', title: 'Reunions', desc: 'Alumni batch reunions' },
+                { icon: '💼', title: 'Career Fairs', desc: 'Job & networking events' },
+                { icon: '🎭', title: 'Cultural', desc: 'Festivals & celebrations' },
+                { icon: '🏆', title: 'Sports', desc: 'Athletic competitions' }
+              ].map((category, idx) => (
+                <div key={idx} className="glass-card p-8 rounded-2xl text-center hover:scale-105 transition-all cursor-pointer">
+                  <div className="text-5xl mb-4">{category.icon}</div>
+                  <h3 className="text-xl font-bold mb-2" style={{fontFamily: 'Libre Baskerville', color: 'var(--ivory)'}}>{
+                    category.title}
+                  </h3>
+                  <p className="text-sm" style={{color: 'var(--ivory)', opacity: 0.7}}>{category.desc}</p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
