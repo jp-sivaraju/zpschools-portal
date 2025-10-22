@@ -339,13 +339,14 @@ const HomePage = () => {
               {isLogin ? 'Sign in to access your account' : 'Create your account to get started'}
             </DialogDescription>
           </DialogHeader>
-          <form onSubmit={handleAuth} className="space-y-4">
+          <form onSubmit={handleAuth} className="space-y-5 mt-6">
             {!isLogin && (
               <div>
-                <Label htmlFor="name">Full Name</Label>
+                <Label htmlFor="name" className="text-gray-300 mb-2 block">Full Name</Label>
                 <Input
                   id="name"
                   data-testid="auth-name-input"
+                  className="bg-white/5 border-white/10 text-white placeholder:text-gray-500 focus:border-blue-500"
                   value={formData.name}
                   onChange={(e) => setFormData({...formData, name: e.target.value})}
                   required={!isLogin}
@@ -353,22 +354,24 @@ const HomePage = () => {
               </div>
             )}
             <div>
-              <Label htmlFor="email">Email</Label>
+              <Label htmlFor="email" className="text-gray-300 mb-2 block">Email</Label>
               <Input
                 id="email"
                 type="email"
                 data-testid="auth-email-input"
+                className="bg-white/5 border-white/10 text-white placeholder:text-gray-500 focus:border-blue-500"
                 value={formData.email}
                 onChange={(e) => setFormData({...formData, email: e.target.value})}
                 required
               />
             </div>
             <div>
-              <Label htmlFor="password">Password</Label>
+              <Label htmlFor="password" className="text-gray-300 mb-2 block">Password</Label>
               <Input
                 id="password"
                 type="password"
                 data-testid="auth-password-input"
+                className="bg-white/5 border-white/10 text-white placeholder:text-gray-500 focus:border-blue-500"
                 value={formData.password}
                 onChange={(e) => setFormData({...formData, password: e.target.value})}
                 required
@@ -377,43 +380,44 @@ const HomePage = () => {
             {!isLogin && (
               <>
                 <div>
-                  <Label htmlFor="phone">Phone (Optional)</Label>
+                  <Label htmlFor="phone" className="text-gray-300 mb-2 block">Phone (Optional)</Label>
                   <Input
                     id="phone"
                     data-testid="auth-phone-input"
+                    className="bg-white/5 border-white/10 text-white placeholder:text-gray-500 focus:border-blue-500"
                     value={formData.phone}
                     onChange={(e) => setFormData({...formData, phone: e.target.value})}
                   />
                 </div>
                 <div>
-                  <Label htmlFor="role">Role</Label>
+                  <Label htmlFor="role" className="text-gray-300 mb-2 block">Role</Label>
                   <Select value={formData.role} onValueChange={(val) => setFormData({...formData, role: val})}>
-                    <SelectTrigger data-testid="auth-role-select">
+                    <SelectTrigger data-testid="auth-role-select" className="bg-white/5 border-white/10 text-white">
                       <SelectValue />
                     </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="student">Student</SelectItem>
-                      <SelectItem value="alumni">Alumni</SelectItem>
-                      <SelectItem value="parent">Parent</SelectItem>
-                      <SelectItem value="donor">Donor</SelectItem>
-                      <SelectItem value="mentor">Mentor</SelectItem>
+                    <SelectContent className="bg-black/95 border-white/10">
+                      <SelectItem value="student" className="text-white">Student</SelectItem>
+                      <SelectItem value="alumni" className="text-white">Alumni</SelectItem>
+                      <SelectItem value="parent" className="text-white">Parent</SelectItem>
+                      <SelectItem value="donor" className="text-white">Donor</SelectItem>
+                      <SelectItem value="mentor" className="text-white">Mentor</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
               </>
             )}
-            <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700" data-testid="auth-submit-btn">
-              {isLogin ? 'Login' : 'Register'}
+            <Button type="submit" className="w-full btn-premium text-white py-3" data-testid="auth-submit-btn">
+              {isLogin ? 'Sign In' : 'Create Account'}
             </Button>
-            <p className="text-center text-sm text-gray-600">
+            <p className="text-center text-sm text-gray-400 pt-2">
               {isLogin ? "Don't have an account? " : 'Already have an account? '}
               <button
                 type="button"
                 onClick={() => setIsLogin(!isLogin)}
-                className="text-blue-600 font-medium hover:underline"
+                className="text-blue-400 font-medium hover:text-blue-300 transition-colors"
                 data-testid="auth-toggle-btn"
               >
-                {isLogin ? 'Register' : 'Login'}
+                {isLogin ? 'Sign Up' : 'Sign In'}
               </button>
             </p>
           </form>
