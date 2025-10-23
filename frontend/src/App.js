@@ -22,9 +22,15 @@ export const API = `${BACKEND_URL}/api`;
 // Auth Context
 export const AuthContext = React.createContext(null);
 
+// Theme Context
+export const ThemeContext = React.createContext(null);
+
 function App() {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [theme, setTheme] = useState(() => {
+    return localStorage.getItem('theme') || 'dark';
+  });
 
   useEffect(() => {
     // Check if user is logged in
