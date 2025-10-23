@@ -83,27 +83,39 @@ function App() {
   }
 
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
-      <div className="App">
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/schools" element={<SchoolDirectory />} />
-            <Route path="/schools/:id" element={<SchoolDetails />} />
-            <Route path="/alumni" element={<AlumniPortal />} />
-            <Route path="/admin" element={user?.role === 'admin' || user?.role === 'meo' ? <AdminDashboard /> : <Navigate to="/" />} />
-            <Route path="/dashboard" element={user ? <UserDashboard /> : <Navigate to="/" />} />
-            <Route path="/events" element={<EventsPage />} />
-            <Route path="/donations" element={<DonationsPage />} />
-            <Route path="/forum" element={<ForumPage />} />
-            <Route path="/notices" element={<NoticesPage />} />
-            <Route path="/profile" element={user ? <ProfilePage /> : <Navigate to="/" />} />
-            <Route path="/chat" element={user ? <ChatPage /> : <Navigate to="/" />} />
-          </Routes>
-        </BrowserRouter>
-        <Toaster position="top-right" richColors />
-      </div>
-    </AuthContext.Provider>
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      <AuthContext.Provider value={{ user, login, logout }}>
+        <div className="App">
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/schools" element={<SchoolDirectory />} />
+              <Route path="/schools/:id" element={<SchoolDetails />} />
+              <Route path="/alumni" element={<AlumniPortal />} />
+              <Route path="/admin" element={user?.role === 'admin' || user?.role === 'meo' ? <AdminDashboard /> : <Navigate to="/" />} />
+              <Route path="/dashboard" element={user ? <UserDashboard /> : <Navigate to="/" />} />
+              <Route path="/events" element={<EventsPage />} />
+              <Route path="/donations" element={<DonationsPage />} />
+              <Route path="/forum" element={<ForumPage />} />
+              <Route path="/notices" element={<NoticesPage />} />
+              <Route path="/profile" element={user ? <ProfilePage /> : <Navigate to="/" />} />
+              <Route path="/chat" element={user ? <ChatPage /> : <Navigate to="/" />} />
+            </Routes>
+          </BrowserRouter>
+          <Toaster position="top-right" richColors />
+          
+          {/* Theme Toggle Button */}
+          <button
+            onClick={toggleTheme}
+            className="theme-toggle"
+            aria-label="Toggle theme"
+            title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+          >
+            <span className="text-2xl">{theme === 'dark' ? '☀️' : '🌙'}</span>
+          </button>
+        </div>
+      </AuthContext.Provider>
+    </ThemeContext.Provider>
   );
 }
 
