@@ -65,7 +65,7 @@ const HomePage = () => {
               <h1 className="text-lg font-bold tracking-tight" style={{color: 'var(--ivory)', fontFamily: 'Libre Baskerville'}}>
                 Zilla Parishad Schools
               </h1>
-              <p className="text-xs" style={{color: 'var(--gold)'}}>Konaseema District • Est. 1947</p>
+              <p className="text-xs" style={{color: 'var(--gold)'}}>Konaseema District • Est. 2022</p>
             </div>
           </Link>
           <div className="flex items-center space-x-8">
@@ -118,7 +118,7 @@ const HomePage = () => {
                 borderColor: 'var(--gold)'
               }}>
                 <span style={{color: 'var(--gold)'}} className="text-sm font-semibold">
-                  🎓 Empowering 300+ Schools Since 1947
+                  🎓 Empowering 300+ Schools Since 2022
                 </span>
               </div>
               
@@ -268,15 +268,15 @@ const HomePage = () => {
                   75 Years of Educational Excellence
                 </h2>
                 <p className="text-xl leading-relaxed mb-12" style={{color: 'var(--ivory)', opacity: 0.8}}>
-                  Since 1947, Zilla Parishad schools in Konaseema have been the cornerstone of quality education in rural Andhra Pradesh, nurturing generations of leaders, innovators, and change-makers.
+                  Since 2022, Zilla Parishad schools in Konaseema have been the cornerstone of quality education in rural Andhra Pradesh, nurturing generations of leaders, innovators, and change-makers.
                 </p>
                 
                 {/* Timeline */}
                 <div className="space-y-0">
                   {[
-                    { year: '1947', event: 'First ZP School established in Amalapuram' },
-                    { year: '1985', event: 'Expansion to 100+ schools across district' },
-                    { year: '2010', event: 'Digital transformation initiative launched' },
+                    { year: '2022', event: 'First ZP School established in Amalapuram' },
+                    { year: '2023', event: 'Expansion to 100+ schools across district' },
+                    { year: '2024', event: 'Digital transformation initiative launched' },
                     { year: '2025', event: '300+ schools, 100K+ alumni network' }
                   ].map((item, idx) => (
                     <div key={idx} className="timeline-item">
@@ -611,7 +611,7 @@ const HomePage = () => {
                   <span className="text-lg font-bold block" style={{color: 'var(--ivory)', fontFamily: 'Libre Baskerville'}}>
                     Zilla Parishad Schools
                   </span>
-                  <span className="text-sm" style={{color: 'var(--gold)'}}>Est. 1947</span>
+                  <span className="text-sm" style={{color: 'var(--gold)'}}>Est. 2022</span>
                 </div>
               </div>
               <p className="leading-relaxed mb-6" style={{color: 'var(--ivory)', opacity: 0.7}}>

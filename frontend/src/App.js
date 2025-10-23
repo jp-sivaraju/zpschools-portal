@@ -29,7 +29,7 @@ function App() {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [theme, setTheme] = useState(() => {
-    return localStorage.getItem('theme') || 'dark';
+    return 'dark';
   });
 
   useEffect(() => {
@@ -68,7 +68,7 @@ function App() {
   };
 
   const toggleTheme = () => {
-    setTheme(prev => prev === 'dark' ? 'light' : 'dark');
+    setTheme(prev => prev === 'dark' ? 'dark' : 'dark');
   };
 
   if (loading) {
@@ -105,14 +105,14 @@ function App() {
           <Toaster position="top-right" richColors />
           
           {/* Theme Toggle Button */}
-          <button
+          {/* <button
             onClick={toggleTheme}
             className="theme-toggle"
             aria-label="Toggle theme"
             title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
           >
             {/* <span className="text-2xl">{theme === 'dark' ? '☀️' : '🌙'}</span> */}
-          </button>
+          {/* </button>  */}
         </div>
       </AuthContext.Provider>
     </ThemeContext.Provider>

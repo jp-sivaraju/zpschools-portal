@@ -34,7 +34,7 @@ const NavBar = () => {
             <h1 className="text-lg font-bold tracking-tight" style={{color: 'var(--ivory)', fontFamily: 'Libre Baskerville'}}>
               Zilla Parishad Schools
             </h1>
-            <p className="text-xs" style={{color: 'var(--gold)'}}>Konaseema District • Est. 1947</p>
+            <p className="text-xs" style={{color: 'var(--gold)'}}>Konaseema District • Est. 2022</p>
           </div>
         </Link>
         <div className="flex items-center space-x-8">
