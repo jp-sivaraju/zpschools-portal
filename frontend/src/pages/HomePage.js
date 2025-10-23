@@ -294,8 +294,8 @@ const HomePage = () => {
                     Global Alumni Reach
                   </h3>
                   <img
-                    src="https://images.unsplash.com/photo-1639910232134-8cc7505c4e64?w=800"
-                    alt="Global map"
+                    src="https://images.unsplash.com/photo-1522661067900-ab829854a57f?w=800"
+                    alt="Teacher in Indian government school classroom"
                     className="w-full h-64 object-cover rounded-2xl mb-6"
                   />
                   <div className="grid grid-cols-3 gap-4">
