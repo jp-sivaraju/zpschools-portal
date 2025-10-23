@@ -98,8 +98,8 @@ const HomePage = () => {
         {/* Video/Image Background Overlay */}
         <div className="absolute inset-0 opacity-20">
           <img
-            src="https://images.unsplash.com/photo-1639910232134-8cc7505c4e64?w=1920"
-            alt="Campus background"
+            src="https://images.unsplash.com/photo-1560430161-43aa052a2420?w=1920"
+            alt="School campus in India with students"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0" style={{background: 'linear-gradient(to bottom, var(--charcoal), transparent, var(--charcoal))'}}></div>
