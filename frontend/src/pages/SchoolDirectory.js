@@ -12,14 +12,21 @@ const SchoolDirectory = () => {
   const [search, setSearch] = useState('');
   const [loading, setLoading] = useState(true);
 
+  // Mock data replacing API
+  const MOCK_SCHOOLS = [
+    { id: 1, name: 'ZPHS Amalapuram', address: 'Amalapuram, Konaseema' },
+    { id: 2, name: 'ZPHS Ravulapalem', address: 'Ravulapalem, Konaseema' },
+    { id: 3, name: 'ZPHS Mummidivaram', address: 'Mummidivaram, Konaseema' },
+  ];
+
   useEffect(() => {
     fetchSchools();
   }, []);
 
   const fetchSchools = async () => {
     try {
-      const res = await axios.get(`${API}/schools`);
-      setSchools(res.data);
+      // Use mock data instead of API
+      setSchools(MOCK_SCHOOLS);
     } catch (error) {
       console.error('Error fetching schools:', error);
     } finally {

@@ -25,20 +25,25 @@ const HomePage = () => {
     e.preventDefault();
     try {
       if (isLogin) {
-        const res = await axios.post(`${API}/auth/login`, {
+        // Mock login: set a dummy token and user
+        const mockUser = {
+          id: 'u1',
+          name: formData.name || 'Mock User',
           email: formData.email,
-          password: formData.password
-        });
-        login(res.data.access_token, res.data.user);
+          role: 'admin', // or 'student' if preferred
+          phone: formData.phone || '9876543210',
+          approved: true,
+        };
+        login('mock-token', mockUser);
         toast.success('Login successful!');
         setShowAuth(false);
       } else {
-        await axios.post(`${API}/auth/register`, formData);
+        // Mock register: show success and switch to login
         toast.success('Registration successful! Please login.');
         setIsLogin(true);
       }
     } catch (error) {
-      toast.error(error.response?.data?.detail || 'Authentication failed');
+      toast.error('Authentication failed');
     }
   };
 

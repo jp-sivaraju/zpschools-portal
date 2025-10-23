@@ -12,18 +12,27 @@ const AlumniPortal = () => {
   const [alumni, setAlumni] = useState([]);
   const [forumPosts, setForumPosts] = useState([]);
 
+  // Mock data
+  const MOCK_ALUMNI = [
+    { id: 'a1', batch_year: 2005, current_profession: 'Software Engineer', willing_to_mentor: true },
+    { id: 'a2', batch_year: 1998, current_profession: 'Doctor', willing_to_mentor: false },
+    { id: 'a3', batch_year: 2010, current_profession: 'Teacher', willing_to_mentor: true },
+  ];
+
+  const MOCK_FORUM_POSTS = [
+    { id: 'p1', title: 'Mentoring Juniors', content: 'Share tips and opportunities.', category: 'Mentoring', replies_count: 5 },
+    { id: 'p2', title: 'Career Guidance', content: 'Paths after intermediate.', category: 'Career', replies_count: 8 },
+  ];
+
   useEffect(() => {
     fetchData();
   }, []);
 
   const fetchData = async () => {
     try {
-      const [alumniRes, forumRes] = await Promise.all([
-        axios.get(`${API}/alumni`),
-        axios.get(`${API}/forums/posts`)
-      ]);
-      setAlumni(alumniRes.data);
-      setForumPosts(forumRes.data);
+      // Use mock data
+      setAlumni(MOCK_ALUMNI);
+      setForumPosts(MOCK_FORUM_POSTS);
     } catch (error) {
       console.error('Error fetching data:', error);
     }

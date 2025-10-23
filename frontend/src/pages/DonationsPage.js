@@ -22,18 +22,28 @@ const DonationsPage = () => {
     purpose: ''
   });
 
+  // Mock data
+  const MOCK_SCHOOLS = [
+    { id: 1, name: 'ZPHS Amalapuram' },
+    { id: 2, name: 'ZPHS Ravulapalem' },
+    { id: 3, name: 'ZPHS Mummidivaram' },
+  ];
+
+  const MOCK_DONATIONS = [
+    { id: 'd1', donor_name: 'Ramesh Kumar', donor_email: 'ramesh@example.com', amount: 100000, school_id: 1, purpose: 'Library Books', created_at: '2024-12-10T12:00:00Z' },
+    { id: 'd2', donor_name: 'Priya Sharma', donor_email: 'priya@example.com', amount: 150000, school_id: 2, purpose: 'Computer Lab', created_at: '2024-12-12T09:30:00Z' },
+    { id: 'd3', donor_name: 'Anil Reddy', donor_email: 'anil@example.com', amount: 75000, school_id: 1, purpose: 'Sports Equipment', created_at: '2024-12-15T15:45:00Z' },
+  ];
+
   useEffect(() => {
     fetchData();
   }, []);
 
   const fetchData = async () => {
     try {
-      const [donationsRes, schoolsRes] = await Promise.all([
-        axios.get(`${API}/donations`),
-        axios.get(`${API}/schools`)
-      ]);
-      setDonations(donationsRes.data);
-      setSchools(schoolsRes.data);
+      // Use mocks
+      setDonations(MOCK_DONATIONS);
+      setSchools(MOCK_SCHOOLS);
     } catch (error) {
       console.error('Error fetching data:', error);
     }
@@ -42,14 +52,20 @@ const DonationsPage = () => {
   const handleDonate = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`${API}/donations`, {
-        ...formData,
-        amount: parseFloat(formData.amount)
-      });
+      // Simulate donation by adding to local state
+      const newDonation = {
+        id: `d${Date.now()}`,
+        donor_name: formData.donor_name,
+        donor_email: formData.donor_email,
+        amount: parseFloat(formData.amount),
+        school_id: formData.school_id || null,
+        purpose: formData.purpose || 'General Support',
+        created_at: new Date().toISOString(),
+      };
+      setDonations(prev => [newDonation, ...prev]);
       toast.success('Thank you for your generous contribution!');
       setShowDonateModal(false);
       setFormData({ donor_name: '', donor_email: '', amount: '', school_id: '', purpose: '' });
-      fetchData();
     } catch (error) {
       toast.error('Error processing donation');
     }

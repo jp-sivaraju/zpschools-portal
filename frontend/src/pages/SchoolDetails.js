@@ -15,6 +15,55 @@ const SchoolDetails = () => {
   const [needs, setNeeds] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  // Mock data
+  const MOCK_SCHOOLS = [
+    {
+      id: 1,
+      name: 'ZPHS Amalapuram',
+      address: 'Amalapuram, Konaseema',
+      contact_phone: '9876543210',
+      contact_email: 'contact@zpamalapuram.edu',
+      hm_note: 'We are dedicated to nurturing young minds.',
+      facilities: ['Library', 'Computer Lab', 'Playground'],
+    },
+    {
+      id: 2,
+      name: 'ZPHS Ravulapalem',
+      address: 'Ravulapalem, Konaseema',
+      contact_phone: '9876501234',
+      contact_email: 'office@zpravulapalem.edu',
+      hm_note: 'Committed to excellence and growth.',
+      facilities: ['Science Lab', 'Clean Drinking Water', 'Sports Equipment'],
+    },
+    {
+      id: 3,
+      name: 'ZPHS Mummidivaram',
+      address: 'Mummidivaram, Konaseema',
+      contact_phone: '9123456780',
+      contact_email: 'admin@zpmummidivaram.edu',
+      hm_note: 'Creating an environment of learning and creativity.',
+      facilities: ['Library', 'Playground', 'Computer Lab'],
+    },
+  ];
+
+  const MOCK_ALUMNI = [
+    { id: 'a1', school_id: 1, batch_year: 2005, current_profession: 'Software Engineer', willing_to_mentor: true },
+    { id: 'a2', school_id: 1, batch_year: 1998, current_profession: 'Doctor', willing_to_mentor: false },
+    { id: 'a3', school_id: 2, batch_year: 2010, current_profession: 'Teacher', willing_to_mentor: true },
+  ];
+
+  const MOCK_NEWS = [
+    { id: 'n1', school_id: 1, title: 'Science Fair Success', content: 'Students won district-level awards.', created_at: '2024-11-20T10:00:00Z' },
+    { id: 'n2', school_id: 1, title: 'New Library Wing', content: 'New books donated by alumni.', created_at: '2024-12-05T12:00:00Z' },
+    { id: 'n3', school_id: 2, title: 'Sports Day Highlights', content: 'Amazing performances by students.', created_at: '2024-12-10T08:30:00Z' },
+  ];
+
+  const MOCK_NEEDS = [
+    { id: 's1', school_id: 1, title: 'Computer Lab Upgrade', description: 'Need 10 new computers.', category: 'Infrastructure', target_amount: 200000 },
+    { id: 's2', school_id: 1, title: 'Library Books', description: 'Add 200 books to library.', category: 'Learning', target_amount: 50000 },
+    { id: 's3', school_id: 2, title: 'Playground Equipment', description: 'Sports gear for students.', category: 'Sports', target_amount: 75000 },
+  ];
+
   useEffect(() => {
     fetchSchoolData();
   }, [id]);

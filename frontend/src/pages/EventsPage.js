@@ -11,14 +11,42 @@ const EventsPage = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [loading, setLoading] = useState(true);
 
+  // Mock events
+  const MOCK_EVENTS = [
+    {
+      id: 'e1',
+      title: 'Alumni Reunion',
+      description: 'Meet and network with fellow alumni.',
+      event_date: '2025-01-15T10:00:00Z',
+      location: 'ZPHS Amalapuram',
+      rsvp_count: 42,
+    },
+    {
+      id: 'e2',
+      title: 'Career Fair',
+      description: 'Companies hiring fresh graduates.',
+      event_date: '2025-01-20T09:30:00Z',
+      location: 'ZPHS Ravulapalem',
+      rsvp_count: 30,
+    },
+    {
+      id: 'e3',
+      title: 'Sports Day',
+      description: 'District-level athletic competitions.',
+      event_date: '2025-02-05T08:00:00Z',
+      location: 'ZPHS Mummidivaram',
+      rsvp_count: 60,
+    },
+  ];
+
   useEffect(() => {
     fetchEvents();
   }, []);
 
   const fetchEvents = async () => {
     try {
-      const res = await axios.get(`${API}/events`);
-      setEvents(res.data);
+      // Mock instead of API
+      setEvents(MOCK_EVENTS);
     } catch (error) {
       console.error('Error fetching events:', error);
     } finally {

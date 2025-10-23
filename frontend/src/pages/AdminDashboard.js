@@ -12,19 +12,33 @@ const AdminDashboard = () => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  // Mock data
+  const MOCK_STATS = {
+    total_schools: 3,
+    total_users: 6,
+    total_alumni: 3,
+    total_donation_amount: 325000,
+    pending_approvals: 2,
+  };
+
+  const MOCK_USERS = [
+    { id: 'u1', name: 'Admin User', email: 'admin@example.com', role: 'admin', approved: true },
+    { id: 'u2', name: 'MEO Officer', email: 'meo@example.com', role: 'meo', approved: true },
+    { id: 'u3', name: 'Priya Sharma', email: 'priya@example.com', role: 'alumni', approved: false },
+    { id: 'u4', name: 'Anil Reddy', email: 'anil@example.com', role: 'alumni', approved: false },
+    { id: 'u5', name: 'Student A', email: 'studenta@example.com', role: 'student', approved: true },
+    { id: 'u6', name: 'Teacher B', email: 'teacherb@example.com', role: 'teacher', approved: true },
+  ];
+
   useEffect(() => {
     fetchAdminData();
   }, []);
 
   const fetchAdminData = async () => {
     try {
-      const token = localStorage.getItem('token');
-      const [statsRes, usersRes] = await Promise.all([
-        axios.get(`${API}/admin/stats`, { headers: { Authorization: `Bearer ${token}` } }),
-        axios.get(`${API}/admin/users`, { headers: { Authorization: `Bearer ${token}` } })
-      ]);
-      setStats(statsRes.data);
-      setUsers(usersRes.data);
+      // Use mocks instead of API
+      setStats(MOCK_STATS);
+      setUsers(MOCK_USERS);
     } catch (error) {
       toast.error('Error loading admin data');
     } finally {
@@ -34,12 +48,19 @@ const AdminDashboard = () => {
 
   const approveUser = async (userId) => {
     try {
-      const token = localStorage.getItem('token');
-      await axios.put(`${API}/admin/users/${userId}/approve`, {}, {
-        headers: { Authorization: `Bearer ${token}` }
-      });
+      // Simulate local approval
+      setUsers(prev =>
+        prev.map(u => (u.id === userId ? { ...u, approved: true } : u))
+      );
+      // Update pending approvals count
+      setStats(prev => ({
+        ...prev,
+        pending_approvals: Math.max(
+          0,
+          users.filter(u => !u.approved && u.role === 'alumni').length - 1
+        ),
+      }));
       toast.success('User approved successfully');
-      fetchAdminData();
     } catch (error) {
       toast.error('Error approving user');
     }
