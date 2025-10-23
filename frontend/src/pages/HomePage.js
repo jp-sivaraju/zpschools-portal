@@ -186,8 +186,8 @@ const HomePage = () => {
               <div className="magazine-feature">
                 <div className="featured-alumni-card h-full relative rounded-2xl overflow-hidden group">
                   <img
-                    src="https://images.unsplash.com/photo-1714194821788-6fd3634f01f1?w=800"
-                    alt="Featured Alumni"
+                    src="https://images.unsplash.com/photo-1574758324765-a29c77fb9c91?w=800"
+                    alt="Happy Indian government school student"
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
