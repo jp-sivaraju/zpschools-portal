@@ -111,7 +111,7 @@ function App() {
             aria-label="Toggle theme"
             title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
           >
-            <span className="text-2xl">{theme === 'dark' ? '☀️' : '🌙'}</span>
+            {/* <span className="text-2xl">{theme === 'dark' ? '☀️' : '🌙'}</span> */}
           </button>
         </div>
       </AuthContext.Provider>
