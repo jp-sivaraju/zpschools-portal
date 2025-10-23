@@ -51,6 +51,12 @@ function App() {
     }
   }, []);
 
+  useEffect(() => {
+    // Apply theme to body
+    document.body.className = theme === 'light' ? 'light-mode' : '';
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
   const login = (token, userData) => {
     localStorage.setItem('token', token);
     setUser(userData);
@@ -59,6 +65,10 @@ function App() {
   const logout = () => {
     localStorage.removeItem('token');
     setUser(null);
+  };
+
+  const toggleTheme = () => {
+    setTheme(prev => prev === 'dark' ? 'light' : 'dark');
   };
 
   if (loading) {
